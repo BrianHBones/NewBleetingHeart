@@ -228,7 +228,7 @@ GameObject:
   - component: {fileID: 320774877}
   - component: {fileID: 320774878}
   m_Layer: 0
-  m_Name: Patrol2
+  m_Name: Patrol3
   m_TagString: Patrol Point
   m_Icon: {fileID: 7174288486110832750, guid: 0000000000000000d000000000000000, type: 0}
   m_NavMeshLayer: 0
@@ -645,8 +645,8 @@ MonoBehaviour:
   playerTarget: {fileID: 0}
   patrolPoints:
   - {fileID: 1138861684}
-  - {fileID: 320774877}
   - {fileID: 1939563055}
+  - {fileID: 320774877}
   listIndex: 0
 --- !u!1 &1138861683
 GameObject:
@@ -850,8 +850,8 @@ Transform:
   m_ConstrainProportionsScale: 0
   m_Children:
   - {fileID: 1138861684}
-  - {fileID: 320774877}
   - {fileID: 1939563055}
+  - {fileID: 320774877}
   m_Father: {fileID: 0}
   m_RootOrder: 6
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
@@ -866,7 +866,7 @@ GameObject:
   - component: {fileID: 1939563055}
   - component: {fileID: 1939563056}
   m_Layer: 0
-  m_Name: Patrol3
+  m_Name: Patrol2
   m_TagString: Patrol Point
   m_Icon: {fileID: 7174288486110832750, guid: 0000000000000000d000000000000000, type: 0}
   m_NavMeshLayer: 0
