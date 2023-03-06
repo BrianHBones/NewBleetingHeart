@@ -14,9 +14,12 @@ public class EscapeDoorBehaviour : MonoBehaviour
 {
     [SerializeField]
     private PlayerBehaviour pb;
+    
+    [SerializeField]
+    private GameController gc;
 
     [SerializeField]
-    private GameObject player;
+    private GameObject player, gameController;
 
     private bool isInRangeOfDoor = false;
 
@@ -25,6 +28,8 @@ public class EscapeDoorBehaviour : MonoBehaviour
     {
         player = GameObject.FindGameObjectWithTag("Player");
         pb = player.GetComponent<PlayerBehaviour>();
+        gameController = GameObject.FindGameObjectWithTag("GameController");
+        gc = gameController.GetComponent<GameController>();
         isInRangeOfDoor = false;
     }
 
@@ -38,10 +43,12 @@ public class EscapeDoorBehaviour : MonoBehaviour
                 if (pb.numCollectiblesHeld < 3)
                 {
                     Debug.Log("Not enough keys");
+                    gc.DisplayPlayerMessage("Not enough keys");
                 }
                 else if (pb.numCollectiblesHeld >= 3)
                 {
                     Debug.Log("YOU ESCAPED");
+                    gc.DisplayPlayerMessage("YOU ESCAPED");
                 }
             }
         }
