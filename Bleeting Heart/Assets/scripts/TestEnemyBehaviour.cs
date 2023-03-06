@@ -29,6 +29,7 @@ public class TestEnemyBehaviour : MonoBehaviour
             nAgent.destination = target;
         }
 
+        // Checks if enemy hits the patrol point and sets target to the next point
         if(gameObject.transform.position.x == target.x && gameObject.transform.position.z == target.z)
         {
             if(listIndex == patrolPoints.Length - 1)
