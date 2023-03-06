@@ -111,7 +111,7 @@ public class FirstPersonController : MonoBehaviour
     public bool enableCrouch = true;
     public bool holdToCrouch = true;
     public KeyCode crouchKey = KeyCode.LeftControl;
-    public float crouchHeight = .75f;
+    public float crouchHeight = .35f;
     public float speedReduction = .5f;
 
     // Internal Variables
