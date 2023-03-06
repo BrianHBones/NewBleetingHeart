@@ -28,7 +28,11 @@ public class PlayerBehaviour : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        if(numCollectiblesHeld >= numCollectiblesNeeded)
+        if (Input.GetMouseButton(0))
+        {
+            Debug.Log("Clicked");
+        }
+            if (numCollectiblesHeld >= numCollectiblesNeeded)
         {
             // Able to unlock door
         }
