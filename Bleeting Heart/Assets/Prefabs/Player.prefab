@@ -504,6 +504,7 @@ GameObject:
   - component: {fileID: 3682593578981272291}
   - component: {fileID: 3682593578981272295}
   - component: {fileID: 3682593578981272294}
+  - component: {fileID: 648427351329469317}
   m_Layer: 0
   m_Name: Player
   m_TagString: Player
@@ -683,6 +684,20 @@ MonoBehaviour:
   joint: {fileID: 3682593577929242362}
   bobSpeed: 10
   bobAmount: {x: 0, y: 0.1, z: 0}
+--- !u!114 &648427351329469317
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3682593578981272300}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: fcc4ffe0b77bda74096e11df0323445b, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  numCollectiblesNeeded: 0
+  numCollectiblesHeld: 0
 --- !u!1001 &2167165493678431045
 PrefabInstance:
   m_ObjectHideFlags: 0
