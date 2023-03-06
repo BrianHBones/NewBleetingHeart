@@ -12,7 +12,6 @@ public class TestEnemyBehaviour : MonoBehaviour
     void Start()
     {
         nAgent = GetComponent<NavMeshAgent>();
-        //nAgent.destination = target.transform.position;
     }
 
     // Update is called once per frame
