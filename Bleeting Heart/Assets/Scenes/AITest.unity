@@ -227,7 +227,7 @@ GameObject:
   m_Component:
   - component: {fileID: 476291567}
   - component: {fileID: 476291566}
-  m_Layer: 0
+  m_Layer: 6
   m_Name: NavMesh Modifier Volume
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -277,7 +277,7 @@ GameObject:
   - component: {fileID: 675626456}
   - component: {fileID: 675626455}
   - component: {fileID: 675626454}
-  m_Layer: 0
+  m_Layer: 6
   m_Name: Cube
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -384,7 +384,7 @@ GameObject:
   - component: {fileID: 947836144}
   - component: {fileID: 947836143}
   - component: {fileID: 947836148}
-  m_Layer: 0
+  m_Layer: 6
   m_Name: Floor
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -522,7 +522,7 @@ MonoBehaviour:
   m_Center: {x: 0, y: 2, z: 0}
   m_LayerMask:
     serializedVersion: 2
-    m_Bits: 55
+    m_Bits: 118
   m_UseGeometry: 0
   m_DefaultArea: 0
   m_IgnoreNavMeshAgent: 1
@@ -800,7 +800,7 @@ GameObject:
   - component: {fileID: 2076914641}
   - component: {fileID: 2076914640}
   - component: {fileID: 2076914639}
-  m_Layer: 6
+  m_Layer: 0
   m_Name: Target
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -915,7 +915,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 2076914638}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 7.46, y: 1.81, z: 0.89}
+  m_LocalPosition: {x: 7.46, y: 1.81, z: -6.53}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
