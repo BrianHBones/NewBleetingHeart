@@ -7,7 +7,7 @@ using UnityEngine.AI;
 public class TestEnemyBehaviour : MonoBehaviour
 {
     public GameObject playerTarget;
-    private Vector3 target;
+    public Vector3 target;
 
     NavMeshAgent nAgent;
 
