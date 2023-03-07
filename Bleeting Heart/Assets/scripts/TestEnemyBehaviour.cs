@@ -13,6 +13,8 @@ public class TestEnemyBehaviour : MonoBehaviour
     public Transform[] patrolPoints;
     public int listIndex = 0;
     public int detectRadius;
+
+    public bool chase;
     
 
     // Start is called before the first frame update
@@ -20,6 +22,7 @@ public class TestEnemyBehaviour : MonoBehaviour
     {
         nAgent = GetComponent<NavMeshAgent>();
         detectRadius = 15;
+        chase = false;
     }
 
     // Update is called once per frame
@@ -47,11 +50,11 @@ public class TestEnemyBehaviour : MonoBehaviour
 
         if(GameObject.Find("HeartbeatController").GetComponent<HeartbeatBehaviour>().fastHeartrate == true)
         {
-            detectRadius = 25;
+            detectRadius = 20;
         }
         else if(GameObject.Find("HeartbeatController").GetComponent<HeartbeatBehaviour>().regularHeartrate == true)
         {
-            detectRadius = 15;
+            detectRadius = 13;
         }
         else if(GameObject.Find("HeartbeatController").GetComponent<HeartbeatBehaviour>().slowHeartrate == true)
         {
@@ -59,7 +62,7 @@ public class TestEnemyBehaviour : MonoBehaviour
         }
         else
         {
-            detectRadius = 0;
+            detectRadius = 1;
         }
     }
 }
