@@ -31,16 +31,18 @@ public class TestEnemyBehaviour : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
+        /// target is set to the next patrol point's position.
         target = patrolPoints[listIndex].position;
 
+        /// If it isn't chasing the player, patrol.
         if (playerTarget == null)
         {
             nAgent.destination = target;
         }
 
-        /// If the player is close enough to the enemy, set timer to 5 and begin chasing player
-        /// If the player is far enough away from enemy, begin decreasing timer
-        /// If timer runs out, stop chasing and resume patrolling
+        /// If the player is close enough to the enemy, set timer to 5 and begin chasing player.
+        /// If the player is far enough away from enemy, begin decreasing timer.
+        /// If timer runs out, stop chasing and resume patrolling.
         if(Vector3.Distance(GameObject.Find("Player").transform.position, transform.position) < detectRadius)
         {
             timer = 5;
@@ -55,7 +57,7 @@ public class TestEnemyBehaviour : MonoBehaviour
             }
         }
 
-        // Checks if enemy hits the patrol point and sets target to the next point
+        /// Checks if enemy hits the patrol point and sets target to the next point.
         if (gameObject.transform.position.x == target.x && gameObject.transform.position.z == target.z)
         {
             if(listIndex == patrolPoints.Length - 1)
@@ -68,6 +70,7 @@ public class TestEnemyBehaviour : MonoBehaviour
             }
         }
 
+        /// Changes the enemy detection radius based on the player's heartbeat.
         if(GameObject.Find("HeartbeatController").GetComponent<HeartbeatBehaviour>().fastHeartrate == true)
         {
             detectRadius = 20;
