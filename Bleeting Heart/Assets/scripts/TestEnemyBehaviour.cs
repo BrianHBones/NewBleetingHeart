@@ -1,5 +1,6 @@
 using System.Collections;
 using System.Collections.Generic;
+using System.Threading;
 using UnityEngine;
 using UnityEngine.AI;
 
@@ -15,6 +16,7 @@ public class TestEnemyBehaviour : MonoBehaviour
     public int detectRadius;
 
     public bool chase;
+    public float timer;
     
 
     // Start is called before the first frame update
@@ -23,6 +25,7 @@ public class TestEnemyBehaviour : MonoBehaviour
         nAgent = GetComponent<NavMeshAgent>();
         detectRadius = 15;
         chase = false;
+        timer = 5f;
     }
 
     // Update is called once per frame
@@ -35,8 +38,25 @@ public class TestEnemyBehaviour : MonoBehaviour
             nAgent.destination = target;
         }
 
+        /// If the player is close enough to the enemy, set timer to 5 and begin chasing player
+        /// If the player is far enough away from enemy, begin decreasing timer
+        /// If timer runs out, stop chasing and resume patrolling
+        if(Vector3.Distance(GameObject.Find("Player").transform.position, transform.position) < detectRadius)
+        {
+            timer = 5;
+            chase = true;
+        }
+        else if(Vector3.Distance(GameObject.Find("Player").transform.position, transform.position) > detectRadius)
+        {
+            timer -= Time.deltaTime;
+            if(timer <= 0)
+            {
+                chase = false;
+            }
+        }
+
         // Checks if enemy hits the patrol point and sets target to the next point
-        if(gameObject.transform.position.x == target.x && gameObject.transform.position.z == target.z)
+        if (gameObject.transform.position.x == target.x && gameObject.transform.position.z == target.z)
         {
             if(listIndex == patrolPoints.Length - 1)
             {
