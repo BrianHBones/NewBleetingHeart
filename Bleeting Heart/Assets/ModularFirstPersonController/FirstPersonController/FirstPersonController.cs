@@ -17,6 +17,7 @@ using UnityEngine.UI;
 public class FirstPersonController : MonoBehaviour
 {
     private Rigidbody rb;
+    private GameController gc;
 
     #region Camera Movement Variables
 
@@ -134,6 +135,7 @@ public class FirstPersonController : MonoBehaviour
     private void Awake()
     {
         rb = GetComponent<Rigidbody>();
+        gc = GameObject.Find("GameController").GetComponent<GameController>();
 
         crosshairObject = GetComponentInChildren<Image>();
 
@@ -205,7 +207,7 @@ public class FirstPersonController : MonoBehaviour
         #region Camera
 
         // Control camera movement
-        if(cameraCanMove)
+        if(cameraCanMove && !gc.isPaused)
         {
             yaw = transform.localEulerAngles.y + Input.GetAxis("Mouse X") * mouseSensitivity;
 
