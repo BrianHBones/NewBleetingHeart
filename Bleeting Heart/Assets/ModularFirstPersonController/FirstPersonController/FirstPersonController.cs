@@ -19,6 +19,9 @@ public class FirstPersonController : MonoBehaviour
     private Rigidbody rb;
     private GameController gc;
 
+    public GameObject HeartbeatController;
+    public HeartbeatBehaviour hb;
+
     #region Camera Movement Variables
 
     public Camera playerCamera;
@@ -153,6 +156,10 @@ public class FirstPersonController : MonoBehaviour
 
     void Start()
     {
+        HeartbeatController = GameObject.Find("HeartbeatController");
+        hb = HeartbeatController.GetComponent<HeartbeatBehaviour>();
+        
+        
         if(lockCursor)
         {
             Cursor.lockState = CursorLockMode.Locked;
@@ -339,17 +346,17 @@ public class FirstPersonController : MonoBehaviour
 
         if (enableCrouch)
         {
-            if(Input.GetKeyDown(crouchKey) && !holdToCrouch)
+            if(hb.slowHeartrate && !holdToCrouch)
             {
                 Crouch();
             }
             
-            if(Input.GetKeyDown(crouchKey) && holdToCrouch)
+            if(hb.slowHeartrate && holdToCrouch)
             {
                 isCrouched = false;
                 Crouch();
             }
-            else if(Input.GetKeyUp(crouchKey) && holdToCrouch)
+            else if(hb.slowHeartrate && holdToCrouch)
             {
                 isCrouched = true;
                 Crouch();
@@ -387,7 +394,8 @@ public class FirstPersonController : MonoBehaviour
             }
 
             // All movement calculations shile sprint is active
-            if (enableSprint && Input.GetKey(sprintKey) && sprintRemaining > 0f && !isSprintCooldown)
+           // Input.GetKey(sprintKey)
+            if (enableSprint && hb.fastHeartrate && sprintRemaining > 0f && !isSprintCooldown)
             {
                 targetVelocity = transform.TransformDirection(targetVelocity) * sprintSpeed;
 
