@@ -4,7 +4,7 @@ using UnityEngine;
 
 public class heartbeatDoor : MonoBehaviour
 {
-    private HeartbeatBehaviour hb;
+    public HeartbeatBehaviour hb;
 
     [SerializeField]
     private GameObject coolDoor;
@@ -17,17 +17,17 @@ public class heartbeatDoor : MonoBehaviour
         hb = hb.GetComponent<HeartbeatBehaviour>();
     }
 
-    void OnTriggerEnter(Collider collidedObject)
+    void OnTriggerEnter(Collider other)
     {
-        if (collidedObject.gameObject.tag == "Player")
+        if (other.gameObject.tag == "Player")
         {  
             heartBeatDoorRange = true;            
         }
     }
 
-    void OnTriggerExit(Collider collidedObject)
+    void OnTriggerExit(Collider other)
     {
-        if (collidedObject.gameObject.tag == "Player")
+        if (other.gameObject.tag == "Player")
         {
             heartBeatDoorRange = false;            
         }
