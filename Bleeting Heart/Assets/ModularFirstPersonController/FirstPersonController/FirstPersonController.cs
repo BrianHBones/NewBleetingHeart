@@ -19,9 +19,12 @@ public class FirstPersonController : MonoBehaviour
     private Rigidbody rb;
     private GameController gc;
 
-    public GameObject HeartbeatController;
+    public GameObject heartbeatController;
+    
     public HeartbeatBehaviour hb;
     public PlayerBehaviour pb;
+    public Text hrText;
+    public Text healthText;
 
     #region Camera Movement Variables
 
@@ -159,9 +162,12 @@ public class FirstPersonController : MonoBehaviour
 
     void Start()
     {
-        HeartbeatController = GameObject.Find("HeartbeatController");
-        hb = HeartbeatController.GetComponent<HeartbeatBehaviour>();
+        heartbeatController = GameObject.Find("HeartbeatController");
+        
+        
+        hb = heartbeatController.GetComponent<HeartbeatBehaviour>();
 
+        hrText.text = "TEST";
 
         if (lockCursor)
         {
@@ -214,6 +220,21 @@ public class FirstPersonController : MonoBehaviour
 
     private void Update()
     {
+        //heartrate canvas
+        if(hb.regularHeartrate == true)
+        {
+            hrText.text = "Heartrate:  Normal";
+        }
+        else if (hb.fastHeartrate == true)
+        {
+            hrText.text = "Heartrate: Fast";
+        }
+        else if(hb.slowHeartrate == true)
+        {
+            hrText.text = "Heartrate: Slow";
+        }
+    
+        
         #region Camera
 
         // Control camera movement
@@ -545,9 +566,9 @@ public class FirstPersonController : MonoBehaviour
 
 // Custom Editor
 #if UNITY_EDITOR
-    [CustomEditor(typeof(FirstPersonController)), InitializeOnLoadAttribute]
-    public class FirstPersonControllerEditor : Editor
-    {
+[CustomEditor(typeof(FirstPersonController)), InitializeOnLoadAttribute]
+public class FirstPersonControllerEditor : Editor
+{
     FirstPersonController fpc;
     SerializedObject SerFPC;
 
@@ -588,18 +609,18 @@ public class FirstPersonController : MonoBehaviour
         fpc.crosshair = EditorGUILayout.ToggleLeft(new GUIContent("Auto Crosshair", "Determines if the basic crosshair will be turned on, and sets is to the center of the screen."), fpc.crosshair);
 
         // Only displays crosshair options if crosshair is enabled
-        if(fpc.crosshair) 
-        { 
-            EditorGUI.indentLevel++; 
-            EditorGUILayout.BeginHorizontal(); 
-            EditorGUILayout.PrefixLabel(new GUIContent("Crosshair Image", "Sprite to use as the crosshair.")); 
+        if (fpc.crosshair)
+        {
+            EditorGUI.indentLevel++;
+            EditorGUILayout.BeginHorizontal();
+            EditorGUILayout.PrefixLabel(new GUIContent("Crosshair Image", "Sprite to use as the crosshair."));
             fpc.crosshairImage = (Sprite)EditorGUILayout.ObjectField(fpc.crosshairImage, typeof(Sprite), false);
             EditorGUILayout.EndHorizontal();
 
             EditorGUILayout.BeginHorizontal();
             fpc.crosshairColor = EditorGUILayout.ColorField(new GUIContent("Crosshair Color", "Determines the color of the crosshair."), fpc.crosshairColor);
             EditorGUILayout.EndHorizontal();
-            EditorGUI.indentLevel--; 
+            EditorGUI.indentLevel--;
         }
 
         EditorGUILayout.Space();
@@ -657,7 +678,7 @@ public class FirstPersonController : MonoBehaviour
         fpc.useSprintBar = EditorGUILayout.ToggleLeft(new GUIContent("Use Sprint Bar", "Determines if the default sprint bar will appear on screen."), fpc.useSprintBar);
 
         // Only displays sprint bar options if sprint bar is enabled
-        if(fpc.useSprintBar)
+        if (fpc.useSprintBar)
         {
             EditorGUI.indentLevel++;
 
@@ -731,7 +752,7 @@ public class FirstPersonController : MonoBehaviour
         EditorGUILayout.Space();
 
         fpc.enableHeadBob = EditorGUILayout.ToggleLeft(new GUIContent("Enable Head Bob", "Determines if the camera will bob while the player is walking."), fpc.enableHeadBob);
-        
+
 
         GUI.enabled = fpc.enableHeadBob;
         fpc.joint = (Transform)EditorGUILayout.ObjectField(new GUIContent("Camera Joint", "Joint object position is moved while head bob is active."), fpc.joint, typeof(Transform), true);
@@ -742,7 +763,7 @@ public class FirstPersonController : MonoBehaviour
         #endregion
 
         //Sets any changes from the prefab
-        if(GUI.changed)
+        if (GUI.changed)
         {
             EditorUtility.SetDirty(fpc);
             Undo.RecordObject(fpc, "FPC Change");
