@@ -65,7 +65,7 @@ public class TestEnemyBehaviour : MonoBehaviour
         if(chase == false)
         {
             playerTarget = null;
-            nAgent.speed = 2;
+            nAgent.speed = 3;
             if (gameObject.transform.position.x == target.x && gameObject.transform.position.z == target.z)
             {
                 if (listIndex == patrolPoints.Length - 1)
@@ -80,18 +80,18 @@ public class TestEnemyBehaviour : MonoBehaviour
         }
         else
         {
-            nAgent.speed = 4;
+            nAgent.speed = 4.5f;
             playerTarget = GameObject.Find("Player");
         }
 
         /// Changes the enemy detection radius based on the player's heartbeat.
         if(GameObject.Find("HeartbeatController").GetComponent<HeartbeatBehaviour>().fastHeartrate == true)
         {
-            detectRadius = 16;
+            detectRadius = 19;
         }
         else if(GameObject.Find("HeartbeatController").GetComponent<HeartbeatBehaviour>().regularHeartrate == true)
         {
-            detectRadius = 10;
+            detectRadius = 12;
         }
         else if(GameObject.Find("HeartbeatController").GetComponent<HeartbeatBehaviour>().slowHeartrate == true)
         {
