@@ -6,6 +6,7 @@ TagManager:
   tags:
   - Collectible
   - Patrol Point
+  - HideZone
   layers:
   - Default
   - TransparentFX

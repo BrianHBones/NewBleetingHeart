@@ -116,7 +116,7 @@ public class FirstPersonController : MonoBehaviour
     public float speedReduction = .5f;
 
     // Internal Variables
-    private bool isCrouched = false;
+    public bool isCrouched = false;
     private Vector3 originalScale;
 
     #endregion
@@ -335,10 +335,10 @@ public class FirstPersonController : MonoBehaviour
         #region Jump
 
         // Gets input and calls jump method
-        if(enableJump && Input.GetKeyDown(jumpKey) && isGrounded)
+        /*if(enableJump && Input.GetKeyDown(jumpKey) && isGrounded)
         {
             Jump();
-        }
+        }*/
 
         #endregion
 
@@ -346,12 +346,13 @@ public class FirstPersonController : MonoBehaviour
 
         if (enableCrouch)
         {
-            if(hb.slowHeartrate && !holdToCrouch)
+            if(hb.slowHeartrate && !holdToCrouch && isCrouched == false)
             {
+                isCrouched = false;
                 Crouch();
             }
             
-            if(hb.slowHeartrate && holdToCrouch)
+            /*if(hb.slowHeartrate && holdToCrouch)
             {
                 isCrouched = false;
                 Crouch();
@@ -360,7 +361,7 @@ public class FirstPersonController : MonoBehaviour
             {
                 isCrouched = true;
                 Crouch();
-            }
+            }*/
         }
 
         #endregion
@@ -469,7 +470,7 @@ public class FirstPersonController : MonoBehaviour
         }
     }
 
-    private void Jump()
+    /*private void Jump()
     {
         // Adds force to the player rigidbody to jump
         if (isGrounded)
@@ -483,7 +484,7 @@ public class FirstPersonController : MonoBehaviour
         {
             Crouch();
         }
-    }
+    }*/
 
     private void Crouch()
     {
