@@ -429,7 +429,7 @@ public class FirstPersonController : MonoBehaviour
                 rb.AddForce(velocityChange, ForceMode.VelocityChange);
             }
             // All movement calculations while walking
-            else if (hb.regularHeartrate && pb.isHidden == false)
+            else
             {
                 isSprinting = false;
 
