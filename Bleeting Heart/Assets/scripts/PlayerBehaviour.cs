@@ -60,13 +60,11 @@ public class PlayerBehaviour : MonoBehaviour
         }
     }
 
-    /*private void OnTriggerEnter(Collider other)
+    private void OnTriggerEnter(Collider other)
     {
         if (other.gameObject.tag == "HideZone")
         {
             isHidden = true;
-            FirstPersonController fpc = GameObject.FindObjectOfType<FirstPersonController>();
-            fpc.isCrouched = true;
         }
     }
 
@@ -76,5 +74,5 @@ public class PlayerBehaviour : MonoBehaviour
         {
             isHidden = false;
         }
-    }*/
+    }
 }
