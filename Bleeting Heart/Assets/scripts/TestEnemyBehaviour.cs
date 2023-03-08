@@ -102,4 +102,13 @@ public class TestEnemyBehaviour : MonoBehaviour
             detectRadius = 1;
         }
     }
+
+    void OnCollisionEnter(Collision collision)
+    {
+        if(collision.gameObject.tag == "Player")
+        {
+            Time.timeScale = 0;
+            Cursor.lockState = CursorLockMode.None;
+        }
+    }
 }
