@@ -21,6 +21,7 @@ public class FirstPersonController : MonoBehaviour
 
     public GameObject HeartbeatController;
     public HeartbeatBehaviour hb;
+    public PlayerBehaviour pb;
 
     #region Camera Movement Variables
 
@@ -140,6 +141,8 @@ public class FirstPersonController : MonoBehaviour
         rb = GetComponent<Rigidbody>();
         gc = GameObject.Find("GameController").GetComponent<GameController>();
 
+        pb = GameObject.FindObjectOfType<PlayerBehaviour>();
+
         crosshairObject = GetComponentInChildren<Image>();
 
         // Set internal variables
@@ -158,9 +161,9 @@ public class FirstPersonController : MonoBehaviour
     {
         HeartbeatController = GameObject.Find("HeartbeatController");
         hb = HeartbeatController.GetComponent<HeartbeatBehaviour>();
-        
-        
-        if(lockCursor)
+
+
+        if (lockCursor)
         {
             Cursor.lockState = CursorLockMode.Locked;
         }
@@ -348,7 +351,6 @@ public class FirstPersonController : MonoBehaviour
         {
             if(hb.slowHeartrate && !holdToCrouch && isCrouched == false)
             {
-                isCrouched = false;
                 Crouch();
             }
             
@@ -396,7 +398,7 @@ public class FirstPersonController : MonoBehaviour
 
             // All movement calculations shile sprint is active
            // Input.GetKey(sprintKey)
-            if (enableSprint && hb.fastHeartrate && sprintRemaining > 0f && !isSprintCooldown)
+            if (enableSprint && hb.fastHeartrate && sprintRemaining > 0f && !isSprintCooldown && pb.isHidden == false)
             {
                 targetVelocity = transform.TransformDirection(targetVelocity) * sprintSpeed;
 
@@ -427,7 +429,7 @@ public class FirstPersonController : MonoBehaviour
                 rb.AddForce(velocityChange, ForceMode.VelocityChange);
             }
             // All movement calculations while walking
-            else
+            else if (hb.regularHeartrate && pb.isHidden == false)
             {
                 isSprinting = false;
 
