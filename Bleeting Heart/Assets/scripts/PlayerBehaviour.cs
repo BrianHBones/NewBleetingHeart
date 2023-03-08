@@ -18,6 +18,8 @@ public class PlayerBehaviour : MonoBehaviour
     [Tooltip("Value of the number of items the player currently holds.")]
     public int numCollectiblesHeld;
 
+    public bool isHidden = false;
+
     // Start is called before the first frame update
     void Start()
     {
@@ -55,6 +57,22 @@ public class PlayerBehaviour : MonoBehaviour
         if (collidedObject.gameObject.tag == "Collectible")
         {
             IncreaseNumCollectibles(1);
+        }
+    }
+
+    private void OnTriggerEnter(Collider other)
+    {
+        if (other.gameObject.tag == "HideZone")
+        {
+            isHidden = true;
+        }
+    }
+
+    private void OnTriggerExit(Collider other)
+    {
+        if (other.gameObject.tag == "HideZone")
+        {
+            isHidden = false;
         }
     }
 }
