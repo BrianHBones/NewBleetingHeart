@@ -39,6 +39,10 @@ public class TestEnemyBehaviour : MonoBehaviour
         {
             nAgent.destination = target;
         }
+        else
+        {
+            nAgent.destination = playerTarget.transform.position;
+        }
 
         /// If the player is close enough to the enemy, set timer to 5 and begin chasing player.
         /// If the player is far enough away from enemy, begin decreasing timer.
@@ -58,26 +62,36 @@ public class TestEnemyBehaviour : MonoBehaviour
         }
 
         /// Checks if enemy hits the patrol point and sets target to the next point.
-        if (gameObject.transform.position.x == target.x && gameObject.transform.position.z == target.z)
+        if(chase == false)
         {
-            if(listIndex == patrolPoints.Length - 1)
+            playerTarget = null;
+            nAgent.speed = 2;
+            if (gameObject.transform.position.x == target.x && gameObject.transform.position.z == target.z)
             {
-                listIndex = 0;
+                if (listIndex == patrolPoints.Length - 1)
+                {
+                    listIndex = 0;
+                }
+                else
+                {
+                    listIndex++;
+                }
             }
-            else
-            {
-                listIndex++;
-            }
+        }
+        else
+        {
+            nAgent.speed = 4;
+            playerTarget = GameObject.Find("Player");
         }
 
         /// Changes the enemy detection radius based on the player's heartbeat.
         if(GameObject.Find("HeartbeatController").GetComponent<HeartbeatBehaviour>().fastHeartrate == true)
         {
-            detectRadius = 20;
+            detectRadius = 16;
         }
         else if(GameObject.Find("HeartbeatController").GetComponent<HeartbeatBehaviour>().regularHeartrate == true)
         {
-            detectRadius = 13;
+            detectRadius = 10;
         }
         else if(GameObject.Find("HeartbeatController").GetComponent<HeartbeatBehaviour>().slowHeartrate == true)
         {

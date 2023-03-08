@@ -10406,7 +10406,11 @@ PrefabInstance:
     - target: {fileID: 4354058896739811223, guid: 639bb5ee9e73aa74f9847838b29cf857, type: 3}
       propertyPath: patrolPoints.Array.data[1]
       value: 
-      objectReference: {fileID: 0}
+      objectReference: {fileID: 1749298231}
+    - target: {fileID: 4354058896739811224, guid: 639bb5ee9e73aa74f9847838b29cf857, type: 3}
+      propertyPath: m_Materials.Array.data[0]
+      value: 
+      objectReference: {fileID: 2100000, guid: af53de69df7deaa4789aca41dae08b74, type: 2}
     - target: {fileID: 4354058896739811226, guid: 639bb5ee9e73aa74f9847838b29cf857, type: 3}
       propertyPath: m_RootOrder
       value: 4
