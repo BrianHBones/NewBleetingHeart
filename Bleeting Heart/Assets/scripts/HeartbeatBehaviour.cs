@@ -12,6 +12,9 @@ public class HeartbeatBehaviour : MonoBehaviour
   public bool regularHeartrate;
   public bool slowHeartrate;
   public bool fastHeartrate;
+    public AudioSource normalHeartBeat;
+    public AudioSource fastHeartBeat;
+    public AudioSource slowHeartBeat;
     // Start is called before the first frame update
     void Start()
     {
@@ -39,19 +42,28 @@ public class HeartbeatBehaviour : MonoBehaviour
                 regularHeartrate = true;
                 fastHeartrate = false;
                 slowHeartrate = false;
+                normalHeartBeat.Play();
+                fastHeartBeat.Stop();
+                slowHeartBeat.Stop();
           }
           else if (heartTime < 5 && heartTime > 3)
           {
                 regularHeartrate = false;
                 fastHeartrate = false;
                 slowHeartrate = true;
-          }
+                normalHeartBeat.Stop();
+                fastHeartBeat.Stop();
+                slowHeartBeat.Play();
+            }
           else if (heartTime < 2 && heartTime > 0.25)
           {
                 regularHeartrate = false;
                 fastHeartrate = true;
                 slowHeartrate = false;
-          }
+                normalHeartBeat.Stop();
+                fastHeartBeat.Play();
+                slowHeartBeat.Stop();
+            }
            
                 
                 
