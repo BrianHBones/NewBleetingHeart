@@ -4,62 +4,66 @@ using UnityEngine;
 
 public class HeartbeatBehaviour : MonoBehaviour
 {
-    public float Health = 3;
-    public int heartRate = 60;
-    public bool regularHeartrate;
-    public bool slowHeartrate;
-    public bool fastHeartrate;
-    public bool notDead = true;
+  public  bool Heartbeat;
+  public float startTime;
+  public float Health;
+  public float heartTime;
+  public float ouchScalar;
+  public bool regularHeartrate;
+  public bool slowHeartrate;
+  public bool fastHeartrate;
     // Start is called before the first frame update
     void Start()
     {
-        StartCoroutine("HeartDecrease");
+        Heartbeat = false;
+        Health = 10;
+        heartTime = 0;
+        ouchScalar = 1;
     }
 
     // Update is called once per frame
     void Update()
     {
-        
+        heartTime += Time.deltaTime;
+       
         if (Input.GetKeyUp(KeyCode.Space))
         {
-            if(fastHeartrate){
-                heartRate += 1;
-            }
-            else if(regularHeartrate){
-                heartRate += 3;
-            }
-            else if(slowHeartrate){
-                heartRate += 5;
-            }
+            Heartbeat = true;
+               
+          if (heartTime < 0.25 || heartTime > 5)
+          {
+                    Health -= ouchScalar;
+          }
+          else if (heartTime < 3 && heartTime > 2)
+          {
+                regularHeartrate = true;
+                fastHeartrate = false;
+                slowHeartrate = false;
+          }
+          else if (heartTime < 5 && heartTime > 3)
+          {
+                regularHeartrate = false;
+                fastHeartrate = false;
+                slowHeartrate = true;
+          }
+          else if (heartTime < 2 && heartTime > 0.25)
+          {
+                regularHeartrate = false;
+                fastHeartrate = true;
+                slowHeartrate = false;
+          }
+           
+                
+                
+                heartTime = 0;
         }
-        if(heartRate <= 40){
-            slowHeartrate = true;
-            regularHeartrate = false;
-            fastHeartrate = false;
-        }
-        if(heartRate <= 75 && heartRate > 40){
-            slowHeartrate = false;
-            regularHeartrate = true;
-            fastHeartrate = false;
-        }
-        if(heartRate <= 100 && heartRate > 75){
-            slowHeartrate = false;
-            regularHeartrate = false;
-            fastHeartrate = true;
+        else
+        {
+            Heartbeat = false;
         }
 
-    }
+     
 
-    private IEnumerator HeartDecrease(){
-        while(true){
-            if(notDead){
-                heartRate -= 3;
-            }
-            yield return new WaitForSeconds(1);
-        }
-    }
-
-    public int returnHeartrate(){
-        return heartRate;
+ 
     }
 }

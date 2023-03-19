@@ -11,23 +11,16 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
 using UnityEngine.SceneManagement;
-using TMPro;
 
 public class GameController : MonoBehaviour
 {
     public Text playerMessage;
-    public TextMeshProUGUI heartMessage;
 
     public GameObject pauseMenu;
-
-    HeartbeatBehaviour heartbeat;
 
     [SerializeField]
     public bool isPaused;
 
-    private void Awake() {
-        heartbeat = FindObjectOfType<HeartbeatBehaviour>();
-    }
     // Start is called before the first frame update
     void Start()
     {
@@ -44,7 +37,6 @@ public class GameController : MonoBehaviour
         {
             PauseGame();
         }
-        heartMessage.text = heartbeat.returnHeartrate().ToString("");
     }
 
     public void PauseGame()
