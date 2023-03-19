@@ -4,78 +4,74 @@ using UnityEngine;
 
 public class HeartbeatBehaviour : MonoBehaviour
 {
-  public  bool Heartbeat;
-  public float startTime;
-  public float Health;
-  public float heartTime;
-  public float ouchScalar;
-  public bool regularHeartrate;
-  public bool slowHeartrate;
-  public bool fastHeartrate;
+    public float Health = 3;
+    public int heartRate = 60;
+    public bool regularHeartrate;
+    public bool slowHeartrate;
+    public bool fastHeartrate;
+    public bool notDead = true;
     public AudioSource normalHeartBeat;
     public AudioSource fastHeartBeat;
     public AudioSource slowHeartBeat;
     // Start is called before the first frame update
     void Start()
     {
-        Heartbeat = false;
-        Health = 10;
-        heartTime = 0;
-        ouchScalar = 1;
+        StartCoroutine("HeartDecrease");
     }
 
     // Update is called once per frame
     void Update()
     {
-        heartTime += Time.deltaTime;
-       
+        
         if (Input.GetKeyUp(KeyCode.Space))
         {
-            Heartbeat = true;
-               
-          if (heartTime < 0.25 || heartTime > 5)
-          {
-                    Health -= ouchScalar;
-          }
-          else if (heartTime < 3 && heartTime > 2)
-          {
-                regularHeartrate = true;
-                fastHeartrate = false;
-                slowHeartrate = false;
-                normalHeartBeat.Play();
-                fastHeartBeat.Stop();
-                slowHeartBeat.Stop();
-          }
-          else if (heartTime < 5 && heartTime > 3)
-          {
-                regularHeartrate = false;
-                fastHeartrate = false;
-                slowHeartrate = true;
-                normalHeartBeat.Stop();
-                fastHeartBeat.Stop();
-                slowHeartBeat.Play();
+            if(fastHeartrate){
+                heartRate += 1;
             }
-          else if (heartTime < 2 && heartTime > 0.25)
-          {
-                regularHeartrate = false;
-                fastHeartrate = true;
-                slowHeartrate = false;
-                normalHeartBeat.Stop();
-                fastHeartBeat.Play();
-                slowHeartBeat.Stop();
+            else if(regularHeartrate){
+                heartRate += 3;
             }
-           
-                
-                
-                heartTime = 0;
+            else if(slowHeartrate){
+                heartRate += 5;
+            }
         }
-        else
-        {
-            Heartbeat = false;
+        if(heartRate <= 40){
+            slowHeartrate = true;
+            regularHeartrate = false;
+            fastHeartrate = false;
+            normalHeartBeat.Play();
+            fastHeartBeat.Stop();
+            slowHeartBeat.Stop();
+        }
+        if(heartRate <= 75 && heartRate > 40){
+            slowHeartrate = false;
+            regularHeartrate = true;
+            fastHeartrate = false;
+            normalHeartBeat.Stop();
+            fastHeartBeat.Stop();
+            slowHeartBeat.Play();
+        }
+        if(heartRate <= 100 && heartRate > 75){
+            slowHeartrate = false;
+            regularHeartrate = false;
+            fastHeartrate = true;
+            normalHeartBeat.Stop();
+            fastHeartBeat.Play();
+            slowHeartBeat.Stop();
         }
 
-     
+    }
 
- 
+    private IEnumerator HeartDecrease(){
+        while(true){
+            if(notDead){
+                heartRate -= 3;
+            }
+            yield return new WaitForSeconds(1);
+        }
+    }
+
+    public int returnHeartrate(){
+        return heartRate;
     }
 }
