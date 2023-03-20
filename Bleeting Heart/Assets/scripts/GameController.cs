@@ -18,7 +18,7 @@ public class GameController : MonoBehaviour
     public Text playerMessage;
     public TextMeshProUGUI heartText;
 
-    public GameObject pauseMenu;
+    public GameObject pauseMenu, controlsMenu;
     HeartbeatBehaviour heartbeat;
 
     [SerializeField]
@@ -33,6 +33,7 @@ public class GameController : MonoBehaviour
         playerMessage.text = (" ");
         Time.timeScale = 1;
         pauseMenu.SetActive(false);
+        controlsMenu.SetActive(false);
         isPaused = false;
     }
 
@@ -68,6 +69,17 @@ public class GameController : MonoBehaviour
     public void ChangeScene(string sceneName)
     {
         SceneManager.LoadScene(sceneName);
+    }
+
+    public void OpenControlsMenu()
+    {
+        pauseMenu.SetActive(false);
+        controlsMenu.SetActive(true);
+    }
+    public void CloseControlsMenu()
+    {
+        pauseMenu.SetActive(true);
+        controlsMenu.SetActive(false);
     }
 
     public void QuitGame()
