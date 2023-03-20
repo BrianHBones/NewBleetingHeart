@@ -11,6 +11,7 @@ public class heartbeatDoor : MonoBehaviour
 
     private bool heartBeatDoorRange = false;
     private bool doorDisabled = false;
+    public AudioClip doorOpen;
     // Start is called before the first frame update
     void Start()
     {
@@ -39,6 +40,7 @@ public class heartbeatDoor : MonoBehaviour
         {
             if(hb.fastHeartrate == true)
             {
+                AudioSource.PlayClipAtPoint(doorOpen, gameObject.transform.position);
                 coolDoor.SetActive(false);
                 doorDisabled = true;
             }

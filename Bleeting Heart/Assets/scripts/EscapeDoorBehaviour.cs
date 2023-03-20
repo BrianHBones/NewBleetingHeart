@@ -23,6 +23,7 @@ public class EscapeDoorBehaviour : MonoBehaviour
 
     private bool isInRangeOfDoor = false;
 
+    public AudioSource doorSound;
     // Start is called before the first frame update
     void Start()
     {
@@ -47,6 +48,7 @@ public class EscapeDoorBehaviour : MonoBehaviour
                 }
                 else if (pb.numCollectiblesHeld >= 3)
                 {
+                    doorSound.Play();
                     Debug.Log("YOU ESCAPED");
                     gc.DisplayPlayerMessage("YOU ESCAPED");
                 }

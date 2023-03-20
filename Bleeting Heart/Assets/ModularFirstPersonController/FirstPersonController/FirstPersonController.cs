@@ -139,7 +139,7 @@ public class FirstPersonController : MonoBehaviour
 
     #endregion
     #region Movement Audio
-    public AudioSource audioSource;
+    public AudioSource footstepSounds;
     public AudioClip runSound;
     public AudioClip walkSound;
     public AudioClip sneakSound;
@@ -417,18 +417,16 @@ public class FirstPersonController : MonoBehaviour
             if (targetVelocity.x != 0 || targetVelocity.z != 0 && isGrounded)
             {
                 isWalking = true;
-                print("walking");
-                if (audioSource.isPlaying == false)
+                if (footstepSounds.isPlaying == false)
                 {
-                    audioSource.Play();
+                    footstepSounds.Play();
                 }
             }
             else
             {
-                print("notwalking");
-                if (audioSource.isPlaying)
+                if (footstepSounds.isPlaying)
                 {
-                    audioSource.Stop();
+                    footstepSounds.Stop();
                 }
 
                 isWalking = false;
@@ -439,7 +437,7 @@ public class FirstPersonController : MonoBehaviour
             if (enableSprint && hb.fastHeartrate && sprintRemaining > 0f && !isSprintCooldown && pb.isHidden == false)
             {
                 targetVelocity = transform.TransformDirection(targetVelocity) * sprintSpeed;
-                audioSource.clip = runSound;
+                footstepSounds.clip = runSound;
                 // Apply a force that attempts to reach our target velocity
                 Vector3 velocity = rb.velocity;
                 Vector3 velocityChange = (targetVelocity - velocity);
@@ -476,7 +474,7 @@ public class FirstPersonController : MonoBehaviour
                 }
 
                 targetVelocity = transform.TransformDirection(targetVelocity) * walkSpeed;
-                audioSource.clip = walkSound;
+                footstepSounds.clip = walkSound;
                 // Apply a force that attempts to reach our target velocity
                 Vector3 velocity = rb.velocity;
                 Vector3 velocityChange = (targetVelocity - velocity);
@@ -535,7 +533,6 @@ public class FirstPersonController : MonoBehaviour
             walkSpeed /= speedReduction;
 
             isCrouched = false;
-            audioSource.clip = sneakSound;
         }
         // Crouches player down to set height
         // Reduces walkSpeed
@@ -785,7 +782,7 @@ public class FirstPersonControllerEditor : Editor
         GUILayout.Label("Movement Audio", new GUIStyle(GUI.skin.label) { alignment = TextAnchor.MiddleCenter, fontStyle = FontStyle.Bold, fontSize = 13 }, GUILayout.ExpandWidth(true));
         EditorGUILayout.Space();
 
-        fpc.audioSource = (AudioSource)EditorGUILayout.ObjectField(new GUIContent("Movement Audio Source", "Saves the player movement audio source in scene."), fpc.audioSource, typeof(AudioSource), true);
+        fpc.footstepSounds = (AudioSource)EditorGUILayout.ObjectField(new GUIContent("Movement Audio Source", "Saves the player movement audio source in scene."), fpc.footstepSounds, typeof(AudioSource), true);
         fpc.runSound = (AudioClip)EditorGUILayout.ObjectField(new GUIContent("Run Sound", "Sound that plays when player is moving fast"), fpc.runSound, typeof(AudioClip), false);
         fpc.walkSound = (AudioClip)EditorGUILayout.ObjectField(new GUIContent("Walk Sound", "Sound that plays when player is moving moderate speed"), fpc.walkSound, typeof(AudioClip), false);
         fpc.sneakSound = (AudioClip)EditorGUILayout.ObjectField(new GUIContent("Sneak Sound", "Sound that plays when player is moving slow"), fpc.sneakSound, typeof(AudioClip), false);
