@@ -9,6 +9,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.SceneManagement;
 
 public class EscapeDoorBehaviour : MonoBehaviour
 {
@@ -24,6 +25,7 @@ public class EscapeDoorBehaviour : MonoBehaviour
     private bool isInRangeOfDoor = false;
 
     public AudioSource doorSound;
+
     // Start is called before the first frame update
     void Start()
     {
@@ -50,8 +52,8 @@ public class EscapeDoorBehaviour : MonoBehaviour
                 {
                     doorSound.Play();
                     Debug.Log("YOU ESCAPED");
-                    gc.DisplayPlayerMessage("YOU ESCAPED");
-                }
+                    SceneManager.LoadScene("WinScreen");
+                    }
             }
         }
     }

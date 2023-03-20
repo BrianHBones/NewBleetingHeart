@@ -120,3 +120,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   ItemObtained: {fileID: 8300000, guid: 567fdb897a44b6e4b8388aac292bd2ff, type: 3}
+  gc: {fileID: 0}
+  pb: {fileID: 0}
+  player: {fileID: 0}
+  gameController: {fileID: 0}
