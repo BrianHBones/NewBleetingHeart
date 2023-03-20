@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.Threading;
 using UnityEngine;
 using UnityEngine.AI;
+using UnityEngine.UI;
 using UnityEngine.SceneManagement;
 
 public class TestEnemyBehaviour : MonoBehaviour
@@ -19,6 +20,8 @@ public class TestEnemyBehaviour : MonoBehaviour
     public bool chase;
     public float timer;
 
+    public GameObject enemyChase;
+
     public AudioSource growl;
     // Start is called before the first frame update
     void Start()
@@ -27,6 +30,7 @@ public class TestEnemyBehaviour : MonoBehaviour
         detectRadius = 15;
         chase = false;
         timer = 5f;
+        enemyChase.SetActive(false);
     }
 
     // Update is called once per frame
@@ -65,6 +69,7 @@ public class TestEnemyBehaviour : MonoBehaviour
         /// Checks if enemy hits the patrol point and sets target to the next point.
         if(chase == false)
         {
+            enemyChase.SetActive(false);
             playerTarget = null;
             nAgent.speed = 3;
             if (gameObject.transform.position.x == target.x && gameObject.transform.position.z == target.z)
@@ -85,6 +90,7 @@ public class TestEnemyBehaviour : MonoBehaviour
             nAgent.speed = 4.5f;
             playerTarget = GameObject.Find("Player");
             growl.Play();
+            enemyChase.SetActive(true);
         }
 
         /// Changes the enemy detection radius based on the player's heartbeat.
