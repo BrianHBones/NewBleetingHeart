@@ -417,7 +417,6 @@ public class FirstPersonController : MonoBehaviour
             if (targetVelocity.x != 0 || targetVelocity.z != 0 && isGrounded)
             {
                 isWalking = true;
-                print("walking");
                 if (audioSource.isPlaying == false)
                 {
                     audioSource.Play();
@@ -425,7 +424,6 @@ public class FirstPersonController : MonoBehaviour
             }
             else
             {
-                print("notwalking");
                 if (audioSource.isPlaying)
                 {
                     audioSource.Stop();
@@ -535,7 +533,6 @@ public class FirstPersonController : MonoBehaviour
             walkSpeed /= speedReduction;
 
             isCrouched = false;
-            audioSource.clip = sneakSound;
         }
         // Crouches player down to set height
         // Reduces walkSpeed

@@ -9336,6 +9336,10 @@ PrefabInstance:
       value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 1020043501083249450, guid: 2664e74310332e2449a2cc2f741ce025, type: 3}
+      propertyPath: player
+      value: 
+      objectReference: {fileID: 436311148}
+    - target: {fileID: 1020043501083249450, guid: 2664e74310332e2449a2cc2f741ce025, type: 3}
       propertyPath: fastHeartBeat
       value: 
       objectReference: {fileID: 1886240996}
@@ -14668,7 +14672,7 @@ AudioSource:
   Mute: 0
   Spatialize: 0
   SpatializePostEffects: 0
-  Priority: 128
+  Priority: 91
   DopplerLevel: 1
   MinDistance: 1
   MaxDistance: 500
@@ -14764,7 +14768,7 @@ AudioSource:
   Mute: 0
   Spatialize: 0
   SpatializePostEffects: 0
-  Priority: 128
+  Priority: 91
   DopplerLevel: 1
   MinDistance: 1
   MaxDistance: 500
@@ -14860,7 +14864,7 @@ AudioSource:
   Mute: 0
   Spatialize: 0
   SpatializePostEffects: 0
-  Priority: 128
+  Priority: 91
   DopplerLevel: 1
   MinDistance: 1
   MaxDistance: 500

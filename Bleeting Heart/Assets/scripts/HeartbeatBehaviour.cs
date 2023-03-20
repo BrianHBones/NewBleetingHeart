@@ -13,6 +13,7 @@ public class HeartbeatBehaviour : MonoBehaviour
     public AudioSource normalHeartBeat;
     public AudioSource fastHeartBeat;
     public AudioSource slowHeartBeat;
+    public GameObject player;
     // Start is called before the first frame update
     void Start()
     {
@@ -22,7 +23,7 @@ public class HeartbeatBehaviour : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        
+
         if (Input.GetKeyUp(KeyCode.Space))
         {
             if(fastHeartrate){
@@ -39,25 +40,38 @@ public class HeartbeatBehaviour : MonoBehaviour
             slowHeartrate = true;
             regularHeartrate = false;
             fastHeartrate = false;
-            normalHeartBeat.Play();
-            fastHeartBeat.Stop();
-            slowHeartBeat.Stop();
+            
         }
         if(heartRate <= 75 && heartRate > 40){
             slowHeartrate = false;
             regularHeartrate = true;
             fastHeartrate = false;
-            normalHeartBeat.Stop();
-            fastHeartBeat.Stop();
-            slowHeartBeat.Play();
+           
         }
         if(heartRate <= 100 && heartRate > 75){
             slowHeartrate = false;
             regularHeartrate = false;
             fastHeartrate = true;
-            normalHeartBeat.Stop();
+            
+        }
+        if (regularHeartrate == true)
+        {
+            print("heart");
+            normalHeartBeat.Play();
+            fastHeartBeat.Pause();
+            slowHeartBeat.Pause();
+        }
+        if (slowHeartrate == true)
+        {
+            normalHeartBeat.Pause();
+            fastHeartBeat.Pause();
+            slowHeartBeat.Play();
+        }
+        if (fastHeartrate == true)
+        {
+            normalHeartBeat.Pause();
             fastHeartBeat.Play();
-            slowHeartBeat.Stop();
+            slowHeartBeat.Pause();
         }
 
     }
