@@ -145,6 +145,11 @@ public class FirstPersonController : MonoBehaviour
     public AudioClip sneakSound;
     #endregion
 
+    private int stepSpeed;
+    public float[] stepsPerSecond = new float[3];
+    public AudioClip[] steps;
+    private float stepTimer;
+
     private void Awake()
     {
         rb = GetComponent<Rigidbody>();
@@ -230,16 +235,23 @@ public class FirstPersonController : MonoBehaviour
         if(hb.regularHeartrate == true)
         {
             hrText.text = "   Normal";
+            stepSpeed = 1;
         }
         else if (hb.fastHeartrate == true)
         {
             hrText.text = "   Fast";
+            stepSpeed = 2;
         }
         else if(hb.slowHeartrate == true)
         {
             hrText.text = "   Slow";
+            stepSpeed = 0;
         }
     
+        /*if (playerCanMove && isWalking)
+        {
+            StepSounds();
+        }*/
         
         #region Camera
 
@@ -418,6 +430,7 @@ public class FirstPersonController : MonoBehaviour
             {
                 isWalking = true;
                 print("walking");
+
                 if (audioSource.isPlaying == false)
                 {
                     audioSource.Play();
@@ -577,6 +590,24 @@ public class FirstPersonController : MonoBehaviour
             joint.localPosition = new Vector3(Mathf.Lerp(joint.localPosition.x, jointOriginalPos.x, Time.deltaTime * bobSpeed), Mathf.Lerp(joint.localPosition.y, jointOriginalPos.y, Time.deltaTime * bobSpeed), Mathf.Lerp(joint.localPosition.z, jointOriginalPos.z, Time.deltaTime * bobSpeed));
         }
     }
+
+    /*void StepSounds()
+    {
+        stepTimer += Time.deltaTime;
+
+        if (stepTimer >= 1 / stepsPerSecond[stepSpeed])
+        {
+            stepTimer = 0;
+
+            int step = Random.Range(0, steps.Length - 1);
+            audioSource.clip = steps[step];
+
+            if (!audioSource.isPlaying)
+            {
+                audioSource.Play();
+            }
+        }
+    }*/
 }
 
 
@@ -800,7 +831,6 @@ public class FirstPersonControllerEditor : Editor
             SerFPC.ApplyModifiedProperties();
         }
     }
-
 }
 
 #endif
