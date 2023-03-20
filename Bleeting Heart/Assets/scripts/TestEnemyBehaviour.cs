@@ -17,8 +17,8 @@ public class TestEnemyBehaviour : MonoBehaviour
 
     public bool chase;
     public float timer;
-    
 
+    public AudioSource growl;
     // Start is called before the first frame update
     void Start()
     {
@@ -77,11 +77,13 @@ public class TestEnemyBehaviour : MonoBehaviour
                     listIndex++;
                 }
             }
+            growl.Stop();
         }
         else
         {
             nAgent.speed = 4.5f;
             playerTarget = GameObject.Find("Player");
+            growl.Play();
         }
 
         /// Changes the enemy detection radius based on the player's heartbeat.
