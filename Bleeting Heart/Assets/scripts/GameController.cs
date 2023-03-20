@@ -65,9 +65,9 @@ public class GameController : MonoBehaviour
         
     }
 
-    public void RestartGame()
+    public void ChangeScene(string sceneName)
     {
-        SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex);
+        SceneManager.LoadScene(sceneName);
     }
 
     public void QuitGame()

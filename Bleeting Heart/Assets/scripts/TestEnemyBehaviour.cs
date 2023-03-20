@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.Threading;
 using UnityEngine;
 using UnityEngine.AI;
+using UnityEngine.SceneManagement;
 
 public class TestEnemyBehaviour : MonoBehaviour
 {
@@ -109,7 +110,8 @@ public class TestEnemyBehaviour : MonoBehaviour
     {
         if(collision.gameObject.tag == "Player")
         {
-            Time.timeScale = 0;
+            //Time.timeScale = 0;
+            SceneManager.LoadScene("LoseScreen");
             Cursor.lockState = CursorLockMode.None;
         }
     }
