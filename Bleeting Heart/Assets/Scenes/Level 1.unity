@@ -6333,7 +6333,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 4459864850019384738, guid: 6bacecc4f3df9584198879c73a6b6c36, type: 3}
       propertyPath: m_LocalPosition.y
-      value: 2.2
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 4459864850019384738, guid: 6bacecc4f3df9584198879c73a6b6c36, type: 3}
       propertyPath: m_LocalPosition.z
@@ -9297,15 +9297,15 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 1020043501083249449, guid: 2664e74310332e2449a2cc2f741ce025, type: 3}
       propertyPath: m_LocalPosition.x
-      value: 0
+      value: 80.42066
       objectReference: {fileID: 0}
     - target: {fileID: 1020043501083249449, guid: 2664e74310332e2449a2cc2f741ce025, type: 3}
       propertyPath: m_LocalPosition.y
-      value: 0
+      value: 0.89
       objectReference: {fileID: 0}
     - target: {fileID: 1020043501083249449, guid: 2664e74310332e2449a2cc2f741ce025, type: 3}
       propertyPath: m_LocalPosition.z
-      value: 0
+      value: 35.49145
       objectReference: {fileID: 0}
     - target: {fileID: 1020043501083249449, guid: 2664e74310332e2449a2cc2f741ce025, type: 3}
       propertyPath: m_LocalRotation.w
@@ -9313,15 +9313,15 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 1020043501083249449, guid: 2664e74310332e2449a2cc2f741ce025, type: 3}
       propertyPath: m_LocalRotation.x
-      value: 0
+      value: -0
       objectReference: {fileID: 0}
     - target: {fileID: 1020043501083249449, guid: 2664e74310332e2449a2cc2f741ce025, type: 3}
       propertyPath: m_LocalRotation.y
-      value: 0
+      value: -0
       objectReference: {fileID: 0}
     - target: {fileID: 1020043501083249449, guid: 2664e74310332e2449a2cc2f741ce025, type: 3}
       propertyPath: m_LocalRotation.z
-      value: 0
+      value: -0
       objectReference: {fileID: 0}
     - target: {fileID: 1020043501083249449, guid: 2664e74310332e2449a2cc2f741ce025, type: 3}
       propertyPath: m_LocalEulerAnglesHint.x
@@ -9336,6 +9336,10 @@ PrefabInstance:
       value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 1020043501083249450, guid: 2664e74310332e2449a2cc2f741ce025, type: 3}
+      propertyPath: Health
+      value: 10
+      objectReference: {fileID: 0}
+    - target: {fileID: 1020043501083249450, guid: 2664e74310332e2449a2cc2f741ce025, type: 3}
       propertyPath: player
       value: 
       objectReference: {fileID: 436311148}
@@ -9347,6 +9351,10 @@ PrefabInstance:
       propertyPath: slowHeartBeat
       value: 
       objectReference: {fileID: 1886240995}
+    - target: {fileID: 1020043501083249450, guid: 2664e74310332e2449a2cc2f741ce025, type: 3}
+      propertyPath: slowHeartrate
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 1020043501083249450, guid: 2664e74310332e2449a2cc2f741ce025, type: 3}
       propertyPath: normalHeartBeat
       value: 
@@ -14672,7 +14680,7 @@ AudioSource:
   Mute: 0
   Spatialize: 0
   SpatializePostEffects: 0
-  Priority: 91
+  Priority: 0
   DopplerLevel: 1
   MinDistance: 1
   MaxDistance: 500
@@ -14740,7 +14748,7 @@ AudioSource:
     m_Curve:
     - serializedVersion: 3
       time: 0
-      value: 1
+      value: 0
       inSlope: 0
       outSlope: 0
       tangentMode: 0
@@ -14768,7 +14776,7 @@ AudioSource:
   Mute: 0
   Spatialize: 0
   SpatializePostEffects: 0
-  Priority: 91
+  Priority: 0
   DopplerLevel: 1
   MinDistance: 1
   MaxDistance: 500
@@ -14836,7 +14844,7 @@ AudioSource:
     m_Curve:
     - serializedVersion: 3
       time: 0
-      value: 1
+      value: 0
       inSlope: 0
       outSlope: 0
       tangentMode: 0
@@ -14864,7 +14872,7 @@ AudioSource:
   Mute: 0
   Spatialize: 0
   SpatializePostEffects: 0
-  Priority: 91
+  Priority: 0
   DopplerLevel: 1
   MinDistance: 1
   MaxDistance: 500
@@ -14932,7 +14940,7 @@ AudioSource:
     m_Curve:
     - serializedVersion: 3
       time: 0
-      value: 1
+      value: 0
       inSlope: 0
       outSlope: 0
       tangentMode: 0
