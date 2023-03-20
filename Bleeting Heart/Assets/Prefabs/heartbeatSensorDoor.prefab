@@ -66,7 +66,10 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 0b50f0657a7cc0d4480478492a23824c, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  hb: {fileID: 0}
   coolDoor: {fileID: 9214962802760766390}
+  scanGood: {fileID: 0}
+  scanBad: {fileID: 0}
 --- !u!1 &9214962802760766390
 GameObject:
   m_ObjectHideFlags: 0
