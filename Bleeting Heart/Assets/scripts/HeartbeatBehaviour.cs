@@ -39,17 +39,18 @@ public class HeartbeatBehaviour : MonoBehaviour
             slowHeartrate = true;
             regularHeartrate = false;
             fastHeartrate = false;
-            normalHeartBeat.Play();
+            normalHeartBeat.Stop();
             fastHeartBeat.Stop();
-            slowHeartBeat.Stop();
+            slowHeartBeat.Play();
         }
         if(heartRate <= 75 && heartRate > 40){
             slowHeartrate = false;
             regularHeartrate = true;
             fastHeartrate = false;
-            normalHeartBeat.Stop();
+            normalHeartBeat.Play();
             fastHeartBeat.Stop();
-            slowHeartBeat.Play();
+            slowHeartBeat.Stop();
+
         }
         if(heartRate <= 100 && heartRate > 75){
             slowHeartrate = false;
