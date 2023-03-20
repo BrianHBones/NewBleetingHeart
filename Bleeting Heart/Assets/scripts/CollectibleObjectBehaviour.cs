@@ -12,11 +12,13 @@ using UnityEngine;
 
 public class CollectibleObjectBehaviour : MonoBehaviour
 {
+    public AudioClip ItemObtained;
     void OnCollisionEnter(Collision collidedObject)
     {
         if(collidedObject.gameObject.tag == "Player")
         {
             Debug.Log("Item collected.");
+            AudioSource.PlayClipAtPoint(ItemObtained, gameObject.transform.position);
             Destroy(gameObject);
         }
     }
