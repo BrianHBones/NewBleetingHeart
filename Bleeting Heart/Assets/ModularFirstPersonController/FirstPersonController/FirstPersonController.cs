@@ -229,15 +229,15 @@ public class FirstPersonController : MonoBehaviour
         //heartrate canvas
         if(hb.regularHeartrate == true)
         {
-            hrText.text = "Heartrate:  Normal";
+            hrText.text = "   Normal";
         }
         else if (hb.fastHeartrate == true)
         {
-            hrText.text = "Heartrate: Fast";
+            hrText.text = "   Fast";
         }
         else if(hb.slowHeartrate == true)
         {
-            hrText.text = "Heartrate: Slow";
+            hrText.text = "   Slow";
         }
     
         

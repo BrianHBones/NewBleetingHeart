@@ -38,7 +38,7 @@ RenderSettings:
   m_ReflectionIntensity: 1
   m_CustomReflection: {fileID: 0}
   m_Sun: {fileID: 0}
-  m_IndirectSpecularColor: {r: 0.44657898, g: 0.4964133, b: 0.5748178, a: 1}
+  m_IndirectSpecularColor: {r: 0.44657826, g: 0.49641263, b: 0.57481676, a: 1}
   m_UseRadianceAmbientProbe: 0
 --- !u!157 &3
 LightmapSettings:
@@ -3517,18 +3517,18 @@ RectTransform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 394349864}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0, y: 0, z: -0.00003862382}
+  m_LocalPosition: {x: 0, y: 0, z: -0.000044539167}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 293121180}
   m_RootOrder: -1
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
-  m_AnchorMin: {x: 0, y: 1}
-  m_AnchorMax: {x: 0, y: 1}
-  m_AnchoredPosition: {x: -0.00012207031, y: 0}
+  m_AnchorMin: {x: 0, y: 0}
+  m_AnchorMax: {x: 0, y: 0}
+  m_AnchoredPosition: {x: 0, y: 0}
   m_SizeDelta: {x: 160, y: 30}
-  m_Pivot: {x: 0, y: 1}
+  m_Pivot: {x: 0, y: 0}
 --- !u!114 &394349866
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -3556,13 +3556,13 @@ MonoBehaviour:
     m_BestFit: 0
     m_MinSize: 3
     m_MaxSize: 40
-    m_Alignment: 0
+    m_Alignment: 1
     m_AlignByGeometry: 0
     m_RichText: 1
     m_HorizontalOverflow: 1
     m_VerticalOverflow: 1
     m_LineSpacing: 1
-  m_Text: 'Heartrate: Unassigned
+  m_Text: '   TEST
 
 '
 --- !u!222 &394349867
@@ -10410,6 +10410,10 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: 1732074851872077194, guid: c0e962f54d0d19f46849950b1422aea2, type: 3}
+      propertyPath: m_AnchoredPosition.y
+      value: 171
+      objectReference: {fileID: 0}
     - target: {fileID: 1732074852036271921, guid: c0e962f54d0d19f46849950b1422aea2, type: 3}
       propertyPath: m_Name
       value: Menus
@@ -10502,6 +10506,18 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 1732074852036271927, guid: c0e962f54d0d19f46849950b1422aea2, type: 3}
+      propertyPath: m_UiScaleMode
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 1732074852847114725, guid: c0e962f54d0d19f46849950b1422aea2, type: 3}
+      propertyPath: m_SizeDelta.y
+      value: -199.707
+      objectReference: {fileID: 0}
+    - target: {fileID: 1732074852847114725, guid: c0e962f54d0d19f46849950b1422aea2, type: 3}
+      propertyPath: m_AnchoredPosition.y
+      value: -45
+      objectReference: {fileID: 0}
     - target: {fileID: 1873896895632212811, guid: c0e962f54d0d19f46849950b1422aea2, type: 3}
       propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_Target
       value: 
@@ -10517,6 +10533,18 @@ PrefabInstance:
     - target: {fileID: 4381741120546981076, guid: c0e962f54d0d19f46849950b1422aea2, type: 3}
       propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_MethodName
       value: PauseGame
+      objectReference: {fileID: 0}
+    - target: {fileID: 4672100660222050721, guid: c0e962f54d0d19f46849950b1422aea2, type: 3}
+      propertyPath: m_AnchoredPosition.y
+      value: 88.3
+      objectReference: {fileID: 0}
+    - target: {fileID: 8223571252828900952, guid: c0e962f54d0d19f46849950b1422aea2, type: 3}
+      propertyPath: m_AnchoredPosition.y
+      value: -1.6999836
+      objectReference: {fileID: 0}
+    - target: {fileID: 8305989912825023172, guid: c0e962f54d0d19f46849950b1422aea2, type: 3}
+      propertyPath: m_AnchoredPosition.y
+      value: -91.69998
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
