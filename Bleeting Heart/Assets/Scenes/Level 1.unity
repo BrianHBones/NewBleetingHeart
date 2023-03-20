@@ -3944,6 +3944,7 @@ MonoBehaviour:
   numCollectiblesNeeded: 3
   numCollectiblesHeld: 0
   isHidden: 0
+  isHiddenText: {fileID: 0}
 --- !u!82 &436311156
 AudioSource:
   m_ObjectHideFlags: 0
