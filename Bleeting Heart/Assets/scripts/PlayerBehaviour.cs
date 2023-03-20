@@ -9,6 +9,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.SceneManagement;
 
 public class PlayerBehaviour : MonoBehaviour
 {
@@ -36,9 +37,9 @@ public class PlayerBehaviour : MonoBehaviour
         {
             Debug.Log("Clicked");
         }
-            if (numCollectiblesHeld >= numCollectiblesNeeded)
+        if (numCollectiblesHeld >= numCollectiblesNeeded)
         {
-            // Able to unlock door
+            SceneManager.LoadScene("WinScreen");
         }
     }
 
