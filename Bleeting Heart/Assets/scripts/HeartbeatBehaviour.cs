@@ -60,7 +60,9 @@ public class HeartbeatBehaviour : MonoBehaviour
             fastHeartBeat.Play();
             slowHeartBeat.Stop();
         }
-
+        if(heartRate >= 101 || heartRate <= 0 ){
+            notDead = false;
+        }
     }
 
     private IEnumerator HeartDecrease(){
