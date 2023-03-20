@@ -11,7 +11,11 @@ public class heartbeatDoor : MonoBehaviour
 
     private bool heartBeatDoorRange = false;
     private bool doorDisabled = false;
-    public AudioClip doorOpen;
+    [SerializeField]
+    private AudioSource scanGood;
+    [SerializeField]
+    private AudioSource scanBad;
+
     // Start is called before the first frame update
     void Start()
     {
@@ -21,8 +25,9 @@ public class heartbeatDoor : MonoBehaviour
     void OnTriggerEnter(Collider other)
     {
         if (other.gameObject.tag == "Player")
-        {  
-            heartBeatDoorRange = true;            
+        {
+            heartBeatDoorRange = true;
+            StartCoroutine("DoorFail");
         }
     }
 
@@ -30,7 +35,8 @@ public class heartbeatDoor : MonoBehaviour
     {
         if (other.gameObject.tag == "Player")
         {
-            heartBeatDoorRange = false;            
+            heartBeatDoorRange = false;
+            StopCoroutine("DoorFail");
         }
     }
     // Update is called once per frame
@@ -38,12 +44,37 @@ public class heartbeatDoor : MonoBehaviour
     {
         if (heartBeatDoorRange == true && doorDisabled == false)
         {
-            if(hb.fastHeartrate == true)
+            if (hb.fastHeartrate == true)
             {
-                AudioSource.PlayClipAtPoint(doorOpen, gameObject.transform.position);
+                if (!scanGood.isPlaying)
+                {
+                    scanGood.Play();
+                }
+                
                 coolDoor.SetActive(false);
                 doorDisabled = true;
             }
+        }
+    }
+
+    IEnumerator DoorFail()
+    {
+        while (true)
+        {
+            while (hb.fastHeartrate == false && heartBeatDoorRange)
+            {
+                print("Playing ScanBad");
+
+                if (!scanBad.isPlaying)
+                {
+                    scanBad.Play();
+                    yield return new WaitForSeconds(1);
+                }
+
+                yield return null;
+            }
+
+            yield return null;
         }
     }
 }
