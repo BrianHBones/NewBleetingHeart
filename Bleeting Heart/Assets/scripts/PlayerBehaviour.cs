@@ -20,6 +20,8 @@ public class PlayerBehaviour : MonoBehaviour
 
     public bool isHidden = false;
 
+    public GameObject isHiddenText;
+
     // Start is called before the first frame update
     void Start()
     {
@@ -65,6 +67,7 @@ public class PlayerBehaviour : MonoBehaviour
         if (other.gameObject.tag == "HideZone")
         {
             isHidden = true;
+            isHiddenText.SetActive(true);
         }
     }
 
@@ -73,6 +76,7 @@ public class PlayerBehaviour : MonoBehaviour
         if (other.gameObject.tag == "HideZone")
         {
             isHidden = false;
+            isHiddenText.SetActive(false);
         }
     }
 }
