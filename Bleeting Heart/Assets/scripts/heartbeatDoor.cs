@@ -11,14 +11,14 @@ public class heartbeatDoor : MonoBehaviour
 
     private bool heartBeatDoorRange = false;
     private bool doorDisabled = false;
+    [SerializeField]
     private AudioSource scanGood;
+    [SerializeField]
     private AudioSource scanBad;
     // Start is called before the first frame update
     void Start()
     {
         hb = hb.GetComponent<HeartbeatBehaviour>();
-        scanGood = transform.GetChild(1).GetComponent<AudioSource>();
-        scanBad = transform.GetChild(2).GetComponent<AudioSource>();
     }
 
     void OnTriggerEnter(Collider other)
@@ -45,21 +45,35 @@ public class heartbeatDoor : MonoBehaviour
         {
             if (hb.fastHeartrate == true)
             {
+                if (!scanGood.isPlaying)
+                {
+                    scanGood.Play();
+                }
+
                 coolDoor.SetActive(false);
                 doorDisabled = true;
-                scanGood.Play();
             }
         }
     }
 
     IEnumerator DoorFail()
     {
-        while (hb.fastHeartBeat == false && heartBeatDoorRange)
+        while (true)
         {
-            scanBad.Play();
-            yield return new WaitForSeconds(1);
-        }
+            while (hb.fastHeartrate == false && heartBeatDoorRange)
+            {
+                print("Playing ScanBad");
 
-        yield return null;
+                if (!scanBad.isPlaying)
+                {
+                    scanBad.Play();
+                    yield return new WaitForSeconds(1);
+                }
+
+                yield return null;
+            }
+
+            yield return null;
+        }
     }
 }
