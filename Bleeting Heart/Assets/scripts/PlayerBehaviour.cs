@@ -39,7 +39,7 @@ public class PlayerBehaviour : MonoBehaviour
         }
         if (numCollectiblesHeld >= numCollectiblesNeeded)
         {
-            SceneManager.LoadScene("WinScreen");
+            
         }
     }
 

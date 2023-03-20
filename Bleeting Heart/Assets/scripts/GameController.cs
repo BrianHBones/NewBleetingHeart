@@ -53,7 +53,7 @@ public class GameController : MonoBehaviour
         {
             isPaused = true;
             Time.timeScale = 0;
-            pauseMenu.SetActive(true);
+            pauseMenu.SetActive(true);            
             Cursor.lockState = CursorLockMode.None;
         }
         else if (isPaused == true)
@@ -61,6 +61,7 @@ public class GameController : MonoBehaviour
             isPaused = false;
             Time.timeScale = 1;
             pauseMenu.SetActive(false);
+            controlsMenu.SetActive(false);
             Cursor.lockState = CursorLockMode.Locked;
         }
         
@@ -76,6 +77,7 @@ public class GameController : MonoBehaviour
         pauseMenu.SetActive(false);
         controlsMenu.SetActive(true);
     }
+    
     public void CloseControlsMenu()
     {
         pauseMenu.SetActive(true);
