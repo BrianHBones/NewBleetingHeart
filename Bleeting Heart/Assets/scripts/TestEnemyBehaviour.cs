@@ -10,6 +10,7 @@ public class TestEnemyBehaviour : MonoBehaviour
 {
     public GameObject playerTarget;
     public Vector3 target;
+    public GameController gc;
 
     NavMeshAgent nAgent;
 
@@ -24,13 +25,16 @@ public class TestEnemyBehaviour : MonoBehaviour
 
     public AudioSource growl;
     public AudioSource[] step = new AudioSource[3];
+    public AudioClip[] growls;
     public AudioClip[] steps;
     public float[] timer_ = new float[3];
+    public bool pauseFlag = false;
 
     // Start is called before the first frame update
     void Start()
     {
         nAgent = GetComponent<NavMeshAgent>();
+        gc = GameObject.Find("GameController").GetComponent<GameController>();
         detectRadius = 15;
         chase = false;
         timer = 5f;
@@ -42,6 +46,19 @@ public class TestEnemyBehaviour : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
+        if (gc.isPaused)
+        {
+            growl.Pause();
+
+            pauseFlag = true;
+        }
+        else if (pauseFlag)
+        {
+            growl.Play();
+
+            pauseFlag = false;
+        }
+
         /// target is set to the next patrol point's position.
         target = patrolPoints[listIndex].position;
 
@@ -89,21 +106,17 @@ public class TestEnemyBehaviour : MonoBehaviour
                     listIndex++;
                 }
             }
-            
-            if (growl.isPlaying)
-            {
-                growl.loop = false;
-            }
         }
         else
         {
             nAgent.speed = 4.5f;
             playerTarget = GameObject.Find("Player");
 
-            if (!growl.isPlaying)
+            if (!growl.isPlaying && !pauseFlag)
             {
+                int growl_ = Random.Range(0, growls.Length);
+                growl.clip = growls[growl_];
                 growl.Play();
-                growl.loop = true;
             }
 
             enemyChase.SetActive(true);

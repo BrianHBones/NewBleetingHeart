@@ -9600,6 +9600,10 @@ PrefabInstance:
       value: 4
       objectReference: {fileID: 0}
     - target: {fileID: 4354058896739811223, guid: 639bb5ee9e73aa74f9847838b29cf857, type: 3}
+      propertyPath: growls.Array.size
+      value: 3
+      objectReference: {fileID: 0}
+    - target: {fileID: 4354058896739811223, guid: 639bb5ee9e73aa74f9847838b29cf857, type: 3}
       propertyPath: timer_.Array.size
       value: 3
       objectReference: {fileID: 0}
@@ -9631,6 +9635,18 @@ PrefabInstance:
       propertyPath: steps.Array.data[3]
       value: 
       objectReference: {fileID: 8300000, guid: 39195aac22c87b94489ca72616e210ee, type: 3}
+    - target: {fileID: 4354058896739811223, guid: 639bb5ee9e73aa74f9847838b29cf857, type: 3}
+      propertyPath: growls.Array.data[0]
+      value: 
+      objectReference: {fileID: 8300000, guid: fdb9deb45bdb9f1449ae8e18843a145d, type: 3}
+    - target: {fileID: 4354058896739811223, guid: 639bb5ee9e73aa74f9847838b29cf857, type: 3}
+      propertyPath: growls.Array.data[1]
+      value: 
+      objectReference: {fileID: 8300000, guid: 8efe2ba1cc021784ba28bb237b0a10ba, type: 3}
+    - target: {fileID: 4354058896739811223, guid: 639bb5ee9e73aa74f9847838b29cf857, type: 3}
+      propertyPath: growls.Array.data[2]
+      value: 
+      objectReference: {fileID: 8300000, guid: a24bbdba138d24f4a94c70230b8d62a3, type: 3}
     - target: {fileID: 4354058896739811223, guid: 639bb5ee9e73aa74f9847838b29cf857, type: 3}
       propertyPath: patrolPoints.Array.size
       value: 8
@@ -9811,15 +9827,15 @@ AudioSource:
   OutputAudioMixerGroup: {fileID: 0}
   m_audioClip: {fileID: 8300000, guid: 7c6716c2ba18fa44daec06590bd4126a, type: 3}
   m_PlayOnAwake: 0
-  m_Volume: 0.224
+  m_Volume: 0.669
   m_Pitch: 1
-  Loop: 1
+  Loop: 0
   Mute: 0
   Spatialize: 0
   SpatializePostEffects: 0
   Priority: 128
   DopplerLevel: 0
-  MinDistance: 5.9083557
+  MinDistance: 4
   MaxDistance: 500
   Pan2D: 0
   rolloffMode: 0
@@ -9836,17 +9852,17 @@ AudioSource:
       outSlope: 0
       tangentMode: 0
       weightedMode: 0
-      inWeight: 0.33333334
-      outWeight: 0.33333334
+      inWeight: 0
+      outWeight: 0
     - serializedVersion: 3
       time: 1
       value: 0
-      inSlope: 0
-      outSlope: 0
+      inSlope: -1.3094734
+      outSlope: -1.3094734
       tangentMode: 0
       weightedMode: 0
-      inWeight: 0.33333334
-      outWeight: 0.33333334
+      inWeight: 0
+      outWeight: 0
     m_PreInfinity: 2
     m_PostInfinity: 2
     m_RotationOrder: 4
