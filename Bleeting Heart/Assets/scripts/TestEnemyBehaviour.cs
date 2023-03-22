@@ -126,8 +126,6 @@ public class TestEnemyBehaviour : MonoBehaviour
         {
             detectRadius = 1;
         }
-
-        //StepSounds();
     }
 
     void OnCollisionEnter(Collision collision)
@@ -187,27 +185,6 @@ public class TestEnemyBehaviour : MonoBehaviour
             step[2].Play();
 
             yield return new WaitForSeconds(1f / 3.4f);
-        }
-    }
-
-    void StepSounds()
-    {
-        for (int x = 0; x < timer_.Length; x++)
-        {
-            timer_[x] += Time.deltaTime;
-
-            if (timer_[x] >= 1.0f / 3.4f)
-            {
-                if (!step[x].isPlaying)
-                {
-                    timer_[x] = 0;
-
-                    int step_ = Random.Range(0, steps.Length);
-                    step[x].clip = steps[step_];
-
-                    step[x].Play();
-                }
-            }
         }
     }
 }
