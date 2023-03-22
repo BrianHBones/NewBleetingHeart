@@ -52,6 +52,7 @@ public class EscapeDoorBehaviour : MonoBehaviour
                 {
                     doorSound.Play();
                     Debug.Log("YOU ESCAPED");
+                    Cursor.lockState = CursorLockMode.None;
                     SceneManager.LoadScene("WinScreen");
                     }
             }
