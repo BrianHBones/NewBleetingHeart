@@ -145,8 +145,8 @@ public class FirstPersonController : MonoBehaviour
     public AudioClip sneakSound;
     #endregion
 
-    private int stepSpeed;
-    public float[] stepsPerSecond = new float[3];
+    private int stepSpeed = 1;
+    private float[] stepsPerSecond = {1f, 1.67f, 3.4f};
     public AudioClip[] steps;
     private float stepTimer;
 
@@ -248,10 +248,10 @@ public class FirstPersonController : MonoBehaviour
             stepSpeed = 0;
         }
     
-        /*if (playerCanMove && isWalking)
+        if (playerCanMove && isWalking)
         {
             StepSounds();
-        }*/
+        }
         
         #region Camera
 
@@ -429,17 +429,17 @@ public class FirstPersonController : MonoBehaviour
             if (targetVelocity.x != 0 || targetVelocity.z != 0 && isGrounded)
             {
                 isWalking = true;
-                if (footstepSounds.isPlaying == false)
+                /*if (footstepSounds.isPlaying == false)
                 {
                     footstepSounds.Play();
-                }
+                }*/
             }
             else
             {
-                if (footstepSounds.isPlaying)
+                /*if (footstepSounds.isPlaying)
                 {
                     footstepSounds.Stop();
-                }
+                }*/
 
                 isWalking = false;
             }
@@ -449,7 +449,7 @@ public class FirstPersonController : MonoBehaviour
             if (enableSprint && hb.fastHeartrate && sprintRemaining > 0f && !isSprintCooldown && pb.isHidden == false)
             {
                 targetVelocity = transform.TransformDirection(targetVelocity) * sprintSpeed;
-                footstepSounds.clip = runSound;
+                //footstepSounds.clip = runSound;
                 // Apply a force that attempts to reach our target velocity
                 Vector3 velocity = rb.velocity;
                 Vector3 velocityChange = (targetVelocity - velocity);
@@ -486,7 +486,7 @@ public class FirstPersonController : MonoBehaviour
                 }
 
                 targetVelocity = transform.TransformDirection(targetVelocity) * walkSpeed;
-                footstepSounds.clip = walkSound;
+                //footstepSounds.clip = walkSound;
                 // Apply a force that attempts to reach our target velocity
                 Vector3 velocity = rb.velocity;
                 Vector3 velocityChange = (targetVelocity - velocity);
@@ -587,23 +587,24 @@ public class FirstPersonController : MonoBehaviour
         }
     }
 
-    /*void StepSounds()
+    void StepSounds()
     {
         stepTimer += Time.deltaTime;
 
         if (stepTimer >= 1 / stepsPerSecond[stepSpeed])
         {
-            stepTimer = 0;
-
-            int step = Random.Range(0, steps.Length - 1);
-            audioSource.clip = steps[step];
-
-            if (!audioSource.isPlaying)
+            if (!footstepSounds.isPlaying)
             {
-                audioSource.Play();
+                stepTimer = 0;
+
+                int step = Random.Range(0, steps.Length - 1);
+                footstepSounds.clip = steps[step];
+
+                footstepSounds.Play();
+                print("Play");
             }
         }
-    }*/
+    }
 }
 
 

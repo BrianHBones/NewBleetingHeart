@@ -505,6 +505,7 @@ GameObject:
   - component: {fileID: 3682593578981272295}
   - component: {fileID: 3682593578981272294}
   - component: {fileID: 648427351329469317}
+  - component: {fileID: 8253948556828037804}
   m_Layer: 0
   m_Name: Player
   m_TagString: Player
@@ -640,6 +641,11 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: d90ba6530d9bfda47abb4610956b2f44, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  heartbeatController: {fileID: 0}
+  hb: {fileID: 0}
+  pb: {fileID: 0}
+  hrText: {fileID: 0}
+  healthText: {fileID: 0}
   playerCamera: {fileID: 3682593578126737528}
   fov: 60
   invertCamera: 0
@@ -680,10 +686,16 @@ MonoBehaviour:
   crouchKey: 306
   crouchHeight: 0.35
   speedReduction: 0.5
+  isCrouched: 0
   enableHeadBob: 1
   joint: {fileID: 3682593577929242362}
   bobSpeed: 10
   bobAmount: {x: 0, y: 0.1, z: 0}
+  footstepSounds: {fileID: 0}
+  runSound: {fileID: 0}
+  walkSound: {fileID: 0}
+  sneakSound: {fileID: 0}
+  steps: []
 --- !u!114 &648427351329469317
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -698,6 +710,25 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   numCollectiblesNeeded: 0
   numCollectiblesHeld: 0
+  isHidden: 0
+  isHiddenText: {fileID: 0}
+--- !u!114 &8253948556828037804
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3682593578981272300}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: ee74cdc990a04dd449f7821d80088672, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  steps:
+  - {fileID: 8300000, guid: ab07e20507d581d4bac08927374f8013, type: 3}
+  - {fileID: 8300000, guid: c4576a7d0ce35e24a8c1e8a3ae70af1e, type: 3}
+  - {fileID: 8300000, guid: a3e9ec7767f180e409d570ecc408588c, type: 3}
+  - {fileID: 8300000, guid: ce4408d4ea24ac7439a2ec4a38faaf4b, type: 3}
 --- !u!1001 &2167165493678431045
 PrefabInstance:
   m_ObjectHideFlags: 0
