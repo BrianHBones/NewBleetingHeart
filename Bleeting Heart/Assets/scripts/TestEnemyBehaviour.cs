@@ -23,6 +23,9 @@ public class TestEnemyBehaviour : MonoBehaviour
     public GameObject enemyChase;
 
     public AudioSource growl;
+    public AudioSource[] step = new AudioSource[3];
+    public AudioClip[] steps;
+    public float[] timer_ = new float[3];
 
     // Start is called before the first frame update
     void Start()
@@ -32,6 +35,8 @@ public class TestEnemyBehaviour : MonoBehaviour
         chase = false;
         timer = 5f;
         enemyChase.SetActive(false);
+
+        StartCoroutine("StepSounds1");
     }
 
     // Update is called once per frame
@@ -121,6 +126,8 @@ public class TestEnemyBehaviour : MonoBehaviour
         {
             detectRadius = 1;
         }
+
+        //StepSounds();
     }
 
     void OnCollisionEnter(Collision collision)
@@ -130,6 +137,77 @@ public class TestEnemyBehaviour : MonoBehaviour
             //Time.timeScale = 0;
             SceneManager.LoadScene("LoseScreen");
             Cursor.lockState = CursorLockMode.None;
+        }
+    }
+
+    IEnumerator StepSounds1()
+    {
+        yield return new WaitForSeconds((1f / 3f) * (1f / 3.4f));
+        StartCoroutine("StepSounds2");
+
+        while (true)
+        {
+            step[0].Stop();
+            int step_ = Random.Range(0, steps.Length);
+            step[0].clip = steps[step_];
+
+            step[0].Play();
+
+            yield return new WaitForSeconds(1f / 3.4f);
+        }
+    }
+
+    IEnumerator StepSounds2()
+    {
+        yield return new WaitForSeconds((1f / 3f) * (1f / 3.4f));
+        StartCoroutine("StepSounds3");
+
+        while (true)
+        {
+            step[1].Stop();
+            int step_ = Random.Range(0, steps.Length);
+            step[1].clip = steps[step_];
+
+            step[1].Play();
+
+            yield return new WaitForSeconds(1f / 3.4f);
+        }
+    }
+
+    IEnumerator StepSounds3()
+    {
+        yield return new WaitForSeconds((1f / 3f) * (1f / 3.4f));
+
+        while (true)
+        {
+            step[2].Stop();
+            int step_ = Random.Range(0, steps.Length);
+            step[2].clip = steps[step_];
+
+            step[2].Play();
+
+            yield return new WaitForSeconds(1f / 3.4f);
+        }
+    }
+
+    void StepSounds()
+    {
+        for (int x = 0; x < timer_.Length; x++)
+        {
+            timer_[x] += Time.deltaTime;
+
+            if (timer_[x] >= 1.0f / 3.4f)
+            {
+                if (!step[x].isPlaying)
+                {
+                    timer_[x] = 0;
+
+                    int step_ = Random.Range(0, steps.Length);
+                    step[x].clip = steps[step_];
+
+                    step[x].Play();
+                }
+            }
         }
     }
 }
