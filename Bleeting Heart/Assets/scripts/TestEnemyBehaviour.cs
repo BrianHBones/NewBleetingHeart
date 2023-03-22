@@ -23,6 +23,7 @@ public class TestEnemyBehaviour : MonoBehaviour
     public GameObject enemyChase;
 
     public AudioSource growl;
+
     // Start is called before the first frame update
     void Start()
     {
@@ -83,13 +84,23 @@ public class TestEnemyBehaviour : MonoBehaviour
                     listIndex++;
                 }
             }
-            growl.Stop();
+            
+            if (growl.isPlaying)
+            {
+                growl.loop = false;
+            }
         }
         else
         {
             nAgent.speed = 4.5f;
             playerTarget = GameObject.Find("Player");
-            growl.Play();
+
+            if (!growl.isPlaying)
+            {
+                growl.Play();
+                growl.loop = true;
+            }
+
             enemyChase.SetActive(true);
         }
 
