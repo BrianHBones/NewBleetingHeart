@@ -248,7 +248,7 @@ public class FirstPersonController : MonoBehaviour
             stepSpeed = 0;
         }
     
-        if (playerCanMove && isWalking)
+        if (playerCanMove && isWalking && !gc.isPaused)
         {
             StepSounds();
         }
