@@ -1,6 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.SceneManagement;
 
 public class HeartbeatBehaviour : MonoBehaviour
 {
@@ -54,7 +55,12 @@ public class HeartbeatBehaviour : MonoBehaviour
             fastHeartrate = true;
             heartBeatSound.clip = fastHeartBeat;
         }
+        if(heartRate > 100 || heartRate <=0){
+            SceneManager.LoadScene("LoseScreen");
+            Cursor.lockState = CursorLockMode.None;
+        }
         heartBeatSound.Play();
+
 
     }
 
