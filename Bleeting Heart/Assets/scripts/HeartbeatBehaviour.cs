@@ -151,7 +151,13 @@ public class HeartbeatBehaviour : MonoBehaviour
 
             avgTime /= tapTimes.Count - 1;
 
-            heartRate = (int)((tapTimes.Count * (60 / timeRange) + (60 / avgTime))/(avgTime > 0 ? 2 : 1));
+            heartRate = (int)(tapTimes.Count * (60 / timeRange));
+
+            if (avgTime > 0)
+            {
+                heartRate = (int)(heartRate + (60 / avgTime) / 2);
+            }
+
             yield return rateChange;
         }
     }
