@@ -134,6 +134,8 @@ public class HeartbeatBehaviour : MonoBehaviour
     {
         while (true)
         {
+            float avgTime = 0;
+
             for (int x = 0; x < tapTimes.Count; x++)
             {
                 if (Time.timeSinceLevelLoad - tapTimes[x] > timeRange)
@@ -141,9 +143,15 @@ public class HeartbeatBehaviour : MonoBehaviour
                     tapTimes.RemoveAt(x);
                     x--;
                 }
+                else if (x > 0)
+                {
+                    avgTime += tapTimes[x] - tapTimes[x - 1];
+                }
             }
 
-            heartRate = (int)(tapTimes.Count * (60 / timeRange));
+            avgTime /= tapTimes.Count - 1;
+
+            heartRate = (int)((tapTimes.Count * (60 / timeRange) + (60 / avgTime))/(avgTime > 0 ? 2 : 1));
             yield return rateChange;
         }
     }
