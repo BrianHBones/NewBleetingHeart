@@ -10610,7 +10610,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 1020043501083249450, guid: 2664e74310332e2449a2cc2f741ce025, type: 3}
       propertyPath: rateGates.Array.data[0]
-      value: 50
+      value: 40
       objectReference: {fileID: 0}
     - target: {fileID: 1020043501083249450, guid: 2664e74310332e2449a2cc2f741ce025, type: 3}
       propertyPath: rateGates.Array.data[1]
@@ -10618,7 +10618,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 1020043501083249450, guid: 2664e74310332e2449a2cc2f741ce025, type: 3}
       propertyPath: rateGates.Array.data[2]
-      value: 140
+      value: 160
       objectReference: {fileID: 0}
     - target: {fileID: 1020043501083249451, guid: 2664e74310332e2449a2cc2f741ce025, type: 3}
       propertyPath: m_Name
