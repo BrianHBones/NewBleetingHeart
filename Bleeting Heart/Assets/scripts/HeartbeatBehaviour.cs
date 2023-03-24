@@ -1,6 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.SceneManagement;
 
 public class HeartbeatBehaviour : MonoBehaviour
 {
@@ -76,6 +77,12 @@ public class HeartbeatBehaviour : MonoBehaviour
             }
         }
 
+        if(heartRate > 100 || heartRate <=0)
+        {
+            SceneManager.LoadScene("LoseScreen");
+            Cursor.lockState = CursorLockMode.None;
+        }
+
         HeartBeat();
     }
 
@@ -126,7 +133,7 @@ public class HeartbeatBehaviour : MonoBehaviour
                 timer = 0;
 
                 heartBeatSound.Play();
-                print(60f / heartRate);
+                //print(60f / heartRate);
             }
         }
     }
