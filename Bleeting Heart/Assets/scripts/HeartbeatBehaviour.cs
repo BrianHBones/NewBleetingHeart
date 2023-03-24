@@ -25,12 +25,21 @@ public class HeartbeatBehaviour : MonoBehaviour
     public AudioClip slowHeartBeat;*/
     public float timer;
     public GameObject player;
+    public bool hardMode;
 
     // Start is called before the first frame update
     void Start()
     {
         rateChange = new WaitForSeconds(changeRate);
-        StartCoroutine("RateTracker");
+
+        if (hardMode)
+        {
+            StartCoroutine("RateTracker");
+        }
+        else
+        {
+            StartCoroutine("HeartDecrease");
+        }
     }
 
     // Update is called once per frame
@@ -38,18 +47,25 @@ public class HeartbeatBehaviour : MonoBehaviour
     {
         if (Input.GetKeyUp(KeyCode.Space))
         {
-            tapTimes.Add(Time.timeSinceLevelLoad);
-
-            /*if(fastHeartrate)
+            if (hardMode)
             {
-                heartRate += 1;
+                tapTimes.Add(Time.timeSinceLevelLoad);
             }
-            else if(regularHeartrate){
-                heartRate += 3;
+            else
+            {
+                if (fastHeartrate)
+                {
+                    heartRate += 1;
+                }
+                else if (regularHeartrate)
+                {
+                    heartRate += 3;
+                }
+                else if (slowHeartrate)
+                {
+                    heartRate += 5;
+                }
             }
-            else if(slowHeartrate){
-                heartRate += 5;
-            }*/
         }
 
         if (Time.timeSinceLevelLoad > freeTime)
@@ -103,7 +119,7 @@ public class HeartbeatBehaviour : MonoBehaviour
         }
     }
 
-    /*private IEnumerator HeartDecrease()
+    private IEnumerator HeartDecrease()
     {
         while (true)
         {
@@ -114,7 +130,7 @@ public class HeartbeatBehaviour : MonoBehaviour
 
             yield return new WaitForSeconds(1);
         }
-    }*/
+    }
 
     public int returnHeartrate()
     {
