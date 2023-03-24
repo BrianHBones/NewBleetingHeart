@@ -496,6 +496,11 @@ public class FirstPersonController : MonoBehaviour
 
                 rb.AddForce(velocityChange, ForceMode.VelocityChange);
             }
+
+            if (hb.slowHeartrate && isCrouched == false || hb.regularHeartrate && isCrouched == true)
+            {
+                Crouch();
+            }
         }
 
         #endregion
@@ -545,6 +550,8 @@ public class FirstPersonController : MonoBehaviour
             walkSpeed /= speedReduction;
 
             isCrouched = false;
+
+
         }
         // Crouches player down to set height
         // Reduces walkSpeed
