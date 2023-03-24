@@ -6,6 +6,14 @@ public class HeartbeatBehaviour : MonoBehaviour
 {
     public float Health = 3;
     public int heartRate = 60;
+
+    public List<float> tapTimes;
+    public float timeRange;
+    public float freeTime;
+    public float changeRate;
+    public int[] rateGates;
+    private WaitForSeconds rateChange;
+
     public bool regularHeartrate;
     public bool slowHeartrate;
     public bool fastHeartrate;
@@ -20,7 +28,8 @@ public class HeartbeatBehaviour : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
-        StartCoroutine("HeartDecrease");
+        rateChange = new WaitForSeconds(changeRate);
+        StartCoroutine("RateTracker");
     }
 
     // Update is called once per frame
@@ -28,7 +37,9 @@ public class HeartbeatBehaviour : MonoBehaviour
     {
         if (Input.GetKeyUp(KeyCode.Space))
         {
-            if(fastHeartrate)
+            tapTimes.Add(Time.timeSinceLevelLoad);
+
+            /*if(fastHeartrate)
             {
                 heartRate += 1;
             }
@@ -37,37 +48,56 @@ public class HeartbeatBehaviour : MonoBehaviour
             }
             else if(slowHeartrate){
                 heartRate += 5;
+            }*/
+        }
+
+        if (Time.timeSinceLevelLoad > freeTime)
+        {
+            if (heartRate <= rateGates[0])
+            {
+                slowHeartrate = true;
+                regularHeartrate = false;
+                fastHeartrate = false;
+                //heartBeatSound.clip = slowHeartBeat;
             }
-        }
-
-        if(heartRate <= 40)
-        {
-            slowHeartrate = true;
-            regularHeartrate = false;
-            fastHeartrate = false;
-            //heartBeatSound.clip = slowHeartBeat;
-        }
-
-        if(heartRate <= 75 && heartRate > 40)
-        {
-            slowHeartrate = false;
-            regularHeartrate = true;
-            fastHeartrate = false;
-            //heartBeatSound.clip = normalHeartBeat;
-        }
-
-        if (heartRate <= 100 && heartRate > 75)
-        {
-            slowHeartrate = false;
-            regularHeartrate = false;
-            fastHeartrate = true;
-            //heartBeatSound.clip = fastHeartBeat;
+            else if (heartRate <= rateGates[1] && heartRate > rateGates[0])
+            {
+                slowHeartrate = false;
+                regularHeartrate = true;
+                fastHeartrate = false;
+                //heartBeatSound.clip = normalHeartBeat;
+            }
+            else if (heartRate <= rateGates[2] && heartRate > rateGates[1])
+            {
+                slowHeartrate = false;
+                regularHeartrate = false;
+                fastHeartrate = true;
+                //heartBeatSound.clip = fastHeartBeat;
+            }
         }
 
         HeartBeat();
     }
 
-    private IEnumerator HeartDecrease()
+    private IEnumerator RateTracker()
+    {
+        while (true)
+        {
+            for (int x = 0; x < tapTimes.Count; x++)
+            {
+                if (Time.timeSinceLevelLoad - tapTimes[x] > timeRange)
+                {
+                    tapTimes.RemoveAt(x);
+                    x--;
+                }
+            }
+
+            heartRate = (heartRate + (int)(tapTimes.Count * (60 / timeRange))) / 2;
+            yield return rateChange;
+        }
+    }
+
+    /*private IEnumerator HeartDecrease()
     {
         while (true)
         {
@@ -78,7 +108,7 @@ public class HeartbeatBehaviour : MonoBehaviour
 
             yield return new WaitForSeconds(1);
         }
-    }
+    }*/
 
     public int returnHeartrate()
     {

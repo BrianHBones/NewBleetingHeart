@@ -10565,6 +10565,18 @@ PrefabInstance:
       value: 
       objectReference: {fileID: 436311148}
     - target: {fileID: 1020043501083249450, guid: 2664e74310332e2449a2cc2f741ce025, type: 3}
+      propertyPath: freeTime
+      value: 2
+      objectReference: {fileID: 0}
+    - target: {fileID: 1020043501083249450, guid: 2664e74310332e2449a2cc2f741ce025, type: 3}
+      propertyPath: timeRange
+      value: 2
+      objectReference: {fileID: 0}
+    - target: {fileID: 1020043501083249450, guid: 2664e74310332e2449a2cc2f741ce025, type: 3}
+      propertyPath: changeRate
+      value: 0.25
+      objectReference: {fileID: 0}
+    - target: {fileID: 1020043501083249450, guid: 2664e74310332e2449a2cc2f741ce025, type: 3}
       propertyPath: fastHeartBeat
       value: 
       objectReference: {fileID: 8300000, guid: 3b3e501392c1a8b44a547c08ff96d6b1, type: 3}
@@ -10584,6 +10596,30 @@ PrefabInstance:
       propertyPath: normalHeartBeat
       value: 
       objectReference: {fileID: 8300000, guid: 56b64cbbdf4090f4195f49822dc2f942, type: 3}
+    - target: {fileID: 1020043501083249450, guid: 2664e74310332e2449a2cc2f741ce025, type: 3}
+      propertyPath: regularHeartrate
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 1020043501083249450, guid: 2664e74310332e2449a2cc2f741ce025, type: 3}
+      propertyPath: tapTimes.Array.size
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 1020043501083249450, guid: 2664e74310332e2449a2cc2f741ce025, type: 3}
+      propertyPath: rateGates.Array.size
+      value: 3
+      objectReference: {fileID: 0}
+    - target: {fileID: 1020043501083249450, guid: 2664e74310332e2449a2cc2f741ce025, type: 3}
+      propertyPath: rateGates.Array.data[0]
+      value: 50
+      objectReference: {fileID: 0}
+    - target: {fileID: 1020043501083249450, guid: 2664e74310332e2449a2cc2f741ce025, type: 3}
+      propertyPath: rateGates.Array.data[1]
+      value: 100
+      objectReference: {fileID: 0}
+    - target: {fileID: 1020043501083249450, guid: 2664e74310332e2449a2cc2f741ce025, type: 3}
+      propertyPath: rateGates.Array.data[2]
+      value: 140
+      objectReference: {fileID: 0}
     - target: {fileID: 1020043501083249451, guid: 2664e74310332e2449a2cc2f741ce025, type: 3}
       propertyPath: m_Name
       value: HeartbeatController
