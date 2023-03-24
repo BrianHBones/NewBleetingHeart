@@ -114,7 +114,7 @@ public class HeartbeatBehaviour : MonoBehaviour
                 }
             }
 
-            heartRate = (heartRate + (int)(tapTimes.Count * (60 / timeRange))) / 2;
+            heartRate = (int)(tapTimes.Count * (60 / timeRange));
             yield return rateChange;
         }
     }
