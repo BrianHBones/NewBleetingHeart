@@ -76,8 +76,7 @@ public class HeartbeatBehaviour : MonoBehaviour
                 //heartBeatSound.clip = fastHeartBeat;
             }
         }
-
-        if(heartRate > 100 || heartRate <=0)
+        else if(heartRate > rateGates[2] || heartRate <= 0)
         {
             SceneManager.LoadScene("LoseScreen");
             Cursor.lockState = CursorLockMode.None;
