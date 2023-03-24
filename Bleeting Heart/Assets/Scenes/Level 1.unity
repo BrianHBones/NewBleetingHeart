@@ -10877,11 +10877,15 @@ PrefabInstance:
       objectReference: {fileID: 436311148}
     - target: {fileID: 1020043501083249450, guid: 2664e74310332e2449a2cc2f741ce025, type: 3}
       propertyPath: freeTime
-      value: 4
+      value: 10
+      objectReference: {fileID: 0}
+    - target: {fileID: 1020043501083249450, guid: 2664e74310332e2449a2cc2f741ce025, type: 3}
+      propertyPath: hardMode
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 1020043501083249450, guid: 2664e74310332e2449a2cc2f741ce025, type: 3}
       propertyPath: timeRange
-      value: 2
+      value: 2.5
       objectReference: {fileID: 0}
     - target: {fileID: 1020043501083249450, guid: 2664e74310332e2449a2cc2f741ce025, type: 3}
       propertyPath: changeRate
