@@ -97,6 +97,35 @@ public class HeartbeatBehaviour : MonoBehaviour
                 Cursor.lockState = CursorLockMode.None;
             }
         }
+        else if (!hardMode)
+        {
+            if (heartRate <= 40)
+            {
+                slowHeartrate = true;
+                regularHeartrate = false;
+                fastHeartrate = false;
+                //heartBeatSound.clip = slowHeartBeat;
+            }
+            else if (heartRate <= 75 && heartRate > 40)
+            {
+                slowHeartrate = false;
+                regularHeartrate = true;
+                fastHeartrate = false;
+                //heartBeatSound.clip = normalHeartBeat;
+            }
+            else if (heartRate <= 100 && heartRate > 75)
+            {
+                slowHeartrate = false;
+                regularHeartrate = false;
+                fastHeartrate = true;
+                //heartBeatSound.clip = fastHeartBeat;
+            }
+            else if (heartRate > 100 || heartRate <= 0)
+            {
+                SceneManager.LoadScene("LoseScreen");
+                Cursor.lockState = CursorLockMode.None;
+            }
+        }
 
         HeartBeat();
     }
