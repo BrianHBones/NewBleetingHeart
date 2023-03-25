@@ -38,7 +38,7 @@ RenderSettings:
   m_ReflectionIntensity: 1
   m_CustomReflection: {fileID: 0}
   m_Sun: {fileID: 0}
-  m_IndirectSpecularColor: {r: 0.44657826, g: 0.49641263, b: 0.57481676, a: 1}
+  m_IndirectSpecularColor: {r: 0.44657898, g: 0.4964133, b: 0.5748178, a: 1}
   m_UseRadianceAmbientProbe: 0
 --- !u!157 &3
 LightmapSettings:
@@ -9974,7 +9974,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 4354058896739811230, guid: 639bb5ee9e73aa74f9847838b29cf857, type: 3}
       propertyPath: m_IsActive
-      value: 1
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 7344998408056378744, guid: 639bb5ee9e73aa74f9847838b29cf857, type: 3}
       propertyPath: m_LocalRotation.w
@@ -18549,17 +18549,20 @@ MonoBehaviour:
 
     ESC - Pause
 
+    T
+    - Display Last Message
 
-    Your
-    heartrate will continuously fall. The higher your heartrate,
 
-    the faster
-    you can move but the easier you are to find. The
+    Your heartrate will continuously fall. The higher
+    your heartrate,
 
-    lower your heartrate, the
-    stealthier you are. Don''t let it get too
+    the faster you can move but the easier you are to find.
+    The
 
-    low or too high, or you will die.'
+    lower your heartrate, the stealthier you are. Don''t let it get too
+
+    low
+    or too high, or you will die.'
 --- !u!222 &2104251912
 CanvasRenderer:
   m_ObjectHideFlags: 0
