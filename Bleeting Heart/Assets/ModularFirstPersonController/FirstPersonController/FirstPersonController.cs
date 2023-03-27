@@ -597,11 +597,10 @@ public class FirstPersonController : MonoBehaviour
             {
                 stepTimer = 0;
 
-                int step = Random.Range(0, steps.Length - 1);
+                int step = Random.Range(0, steps.Length);
                 footstepSounds.clip = steps[step];
 
                 footstepSounds.Play();
-                print("Play");
             }
         }
     }

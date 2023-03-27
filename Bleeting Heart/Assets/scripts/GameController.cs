@@ -22,6 +22,9 @@ public class GameController : MonoBehaviour
     HeartbeatBehaviour heartbeat;
 
     [SerializeField]
+    private string lastMessageDisplayed;
+
+    [SerializeField]
     public bool isPaused;
 
     private void Awake() {
@@ -35,6 +38,7 @@ public class GameController : MonoBehaviour
         pauseMenu.SetActive(false);
         controlsMenu.SetActive(false);
         isPaused = false;
+        lastMessageDisplayed = "";
     }
 
     // Update is called once per frame
@@ -43,6 +47,21 @@ public class GameController : MonoBehaviour
         if (Input.GetKeyDown(KeyCode.Escape))
         {
             PauseGame();
+        }
+
+        if (Input.GetKeyDown(KeyCode.T))
+        {
+            // Print last message
+
+            if (lastMessageDisplayed == "")
+            {
+                DisplayPlayerMessage("No messages yet...");
+            }
+            else
+                {
+                DisplayLastMessage();
+                }
+            
         }
         heartText.text = heartbeat.returnHeartrate().ToString("");
     }
@@ -92,7 +111,13 @@ public class GameController : MonoBehaviour
     public void DisplayPlayerMessage(string input)
     {
         playerMessage.text = input;
+        lastMessageDisplayed = input;
         StartCoroutine(ClearMessage());
+    }
+
+    public void DisplayLastMessage()
+    {
+        DisplayPlayerMessage(lastMessageDisplayed);
     }
 
     IEnumerator ClearMessage()
