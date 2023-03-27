@@ -68,7 +68,7 @@ public class HeartbeatBehaviour : MonoBehaviour
             }
         }
 
-        if (Time.timeSinceLevelLoad > freeTime)
+        if (hardMode && Time.timeSinceLevelLoad > freeTime)
         {
             if (heartRate <= rateGates[0])
             {
@@ -97,7 +97,7 @@ public class HeartbeatBehaviour : MonoBehaviour
                 Cursor.lockState = CursorLockMode.None;
             }
         }
-        else if (!hardMode)
+        else
         {
             if (heartRate <= 40)
             {
