@@ -63,7 +63,11 @@ public class GameController : MonoBehaviour
                 }
             
         }
-        heartText.text = heartbeat.returnHeartrate().ToString("");
+
+        if (heartText != null)
+        {
+            heartText.text = heartbeat.returnHeartrate().ToString("");
+        }
     }
 
     public void PauseGame()

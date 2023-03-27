@@ -1,6 +1,8 @@
 using System.Collections;
 using System.Collections.Generic;
+using TMPro;
 using UnityEngine;
+using UnityEngine.UI;
 
 public class BeatChangeDoor : MonoBehaviour
 {
@@ -8,6 +10,8 @@ public class BeatChangeDoor : MonoBehaviour
 
     public GameObject targetMarker;
     public GameObject heartMarker;
+    public TextMeshPro targetText;
+    public TextMeshPro rangeText;
     public Vector3[] markerMins;
     public Vector3[] markerMaxes;
 
@@ -29,6 +33,10 @@ public class BeatChangeDoor : MonoBehaviour
     {
         hbb = GameObject.Find("HeartbeatController").GetComponent<HeartbeatBehaviour>();
         targetMarker = transform.GetChild(0).gameObject;
+        targetText = targetMarker.transform.GetChild(0).gameObject.GetComponent<TextMeshPro>();
+        targetText.text = "";
+        rangeText = targetMarker.transform.GetChild(1).gameObject.GetComponent<TextMeshPro>();
+        rangeText.text = "+-" + range.ToString();
         heartMarker = transform.GetChild(1).gameObject;
     }
 
@@ -47,6 +55,7 @@ public class BeatChangeDoor : MonoBehaviour
             }
 
             target += dir * changeRate * Time.deltaTime;
+            targetText.text = ((int)target).ToString();
 
             targetMarker.transform.localPosition = Vector3.Lerp(markerMins[0], markerMaxes[0], target / 100);
             heartMarker.transform.localPosition = Vector3.Lerp(markerMins[1], markerMaxes[1], (float)hbb.heartRate / 100);
@@ -79,6 +88,7 @@ public class BeatChangeDoor : MonoBehaviour
             inRange = false;
 
             lockTimer = 0;
+            targetText.text = "";
         }
     }
 }
