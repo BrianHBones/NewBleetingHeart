@@ -7246,10 +7246,6 @@ PrefabInstance:
       value: GameController
       objectReference: {fileID: 0}
     - target: {fileID: 9222662727561052414, guid: d55a4bacc22ab8d41a577ac3e675aede, type: 3}
-      propertyPath: redLight
-      value: 
-      objectReference: {fileID: 970077859}
-    - target: {fileID: 9222662727561052414, guid: d55a4bacc22ab8d41a577ac3e675aede, type: 3}
       propertyPath: heartText
       value: 
       objectReference: {fileID: 710375697}
@@ -7257,14 +7253,6 @@ PrefabInstance:
       propertyPath: pauseMenu
       value: 
       objectReference: {fileID: 309052604}
-    - target: {fileID: 9222662727561052414, guid: d55a4bacc22ab8d41a577ac3e675aede, type: 3}
-      propertyPath: greenLight
-      value: 
-      objectReference: {fileID: 1627312928}
-    - target: {fileID: 9222662727561052414, guid: d55a4bacc22ab8d41a577ac3e675aede, type: 3}
-      propertyPath: yellowLight
-      value: 
-      objectReference: {fileID: 110816520}
     - target: {fileID: 9222662727561052414, guid: d55a4bacc22ab8d41a577ac3e675aede, type: 3}
       propertyPath: controlsMenu
       value: 

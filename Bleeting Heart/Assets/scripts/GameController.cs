@@ -19,7 +19,6 @@ public class GameController : MonoBehaviour
     public TextMeshProUGUI heartText;
 
     public GameObject pauseMenu, controlsMenu;
-    public GameObject redLight, yellowLight, greenLight;
     HeartbeatBehaviour heartbeat;
 
     [SerializeField]
@@ -46,21 +45,6 @@ public class GameController : MonoBehaviour
             PauseGame();
         }
         heartText.text = heartbeat.returnHeartrate().ToString("");
-        if(heartbeat.fastHeartrate == true){
-            greenLight.SetActive(true);
-            yellowLight.SetActive(false);
-            redLight.SetActive(false);
-        }
-        if(heartbeat.regularHeartrate == true){
-            greenLight.SetActive(false);
-            yellowLight.SetActive(true);
-            redLight.SetActive(false);
-        }
-        if(heartbeat.slowHeartrate == true){
-            greenLight.SetActive(false);
-            yellowLight.SetActive(false);
-            redLight.SetActive(true);
-        }
     }
 
     public void PauseGame()
