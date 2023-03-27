@@ -99,7 +99,7 @@ public class HeartbeatBehaviour : MonoBehaviour
         }
         else
         {
-            if (heartRate <= 40)
+            if (heartRate <= 40 && heartRate > 0)
             {
                 slowHeartrate = true;
                 regularHeartrate = false;
@@ -122,6 +122,7 @@ public class HeartbeatBehaviour : MonoBehaviour
             }
             else if (heartRate > 100 || heartRate <= 0)
             {
+                print(heartRate <= 0);
                 SceneManager.LoadScene("LoseScreen");
                 Cursor.lockState = CursorLockMode.None;
             }
