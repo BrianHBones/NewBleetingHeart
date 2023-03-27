@@ -23,6 +23,9 @@ public class TestEnemyBehaviour : MonoBehaviour
 
     public GameObject enemyChase;
 
+    private NavMeshHit hit;
+    private bool blocked = false;
+
     public AudioSource growl;
     public AudioSource[] step = new AudioSource[3];
     public AudioClip[] growls;
@@ -46,6 +49,8 @@ public class TestEnemyBehaviour : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
+        blocked = NavMesh.Raycast(transform.position, GameObject.Find("Player").transform.position, out hit, NavMesh.AllAreas);
+
         if (gc.isPaused)
         {
             growl.Pause();
@@ -72,15 +77,20 @@ public class TestEnemyBehaviour : MonoBehaviour
             nAgent.destination = playerTarget.transform.position;
         }
 
+        if(blocked == false)
+        {
+            timer = 4;
+        }
+
         /// If the player is close enough to the enemy, set timer to 5 and begin chasing player.
         /// If the player is far enough away from enemy, begin decreasing timer.
         /// If timer runs out, stop chasing and resume patrolling.
-        if(Vector3.Distance(GameObject.Find("Player").transform.position, transform.position) < detectRadius)
+        if (Vector3.Distance(GameObject.Find("Player").transform.position, transform.position) < detectRadius)
         {
-            timer = 5;
+            timer = 4;
             chase = true;
         }
-        else if(Vector3.Distance(GameObject.Find("Player").transform.position, transform.position) > detectRadius)
+        else if (Vector3.Distance(GameObject.Find("Player").transform.position, transform.position) > detectRadius && blocked == true)
         {
             timer -= Time.deltaTime;
             if(timer <= 0)
@@ -89,13 +99,20 @@ public class TestEnemyBehaviour : MonoBehaviour
             }
         }
 
+        if (GameObject.Find("Player").GetComponent<PlayerBehaviour>().isHidden == true)
+        {
+            chase = false;
+            playerTarget = null;
+            enemyChase.SetActive(false);
+        }
+
         /// Checks if enemy hits the patrol point and sets target to the next point.
-        if(chase == false)
+        if (chase == false)
         {
             enemyChase.SetActive(false);
             playerTarget = null;
             nAgent.speed = 3;
-            if (gameObject.transform.position.x == target.x && gameObject.transform.position.z == target.z)
+            if ((gameObject.transform.position.x >= target.x -1 && gameObject.transform.position.x <= target.x + 1) && (gameObject.transform.position.z >= target.z - 1 && gameObject.transform.position.z <= target.z + 1))
             {
                 if (listIndex == patrolPoints.Length - 1)
                 {
@@ -123,7 +140,7 @@ public class TestEnemyBehaviour : MonoBehaviour
         }
 
         /// Changes the enemy detection radius based on the player's heartbeat.
-        if(GameObject.Find("HeartbeatController").GetComponent<HeartbeatBehaviour>().fastHeartrate == true)
+        if (GameObject.Find("HeartbeatController").GetComponent<HeartbeatBehaviour>().fastHeartrate == true)
         {
             detectRadius = 19;
         }
