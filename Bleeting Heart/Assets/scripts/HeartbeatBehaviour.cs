@@ -192,7 +192,6 @@ public class HeartbeatBehaviour : MonoBehaviour
                 timer = 0;
 
                 heartBeatSound.Play();
-                //print(60f / heartRate);
             }
         }
     }
