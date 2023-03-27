@@ -496,6 +496,12 @@ public class FirstPersonController : MonoBehaviour
 
                 rb.AddForce(velocityChange, ForceMode.VelocityChange);
             }
+
+            if (hb.slowHeartrate && isCrouched == false || hb.regularHeartrate && isCrouched == true)
+            {
+                Crouch();
+            }
+
         }
 
         #endregion

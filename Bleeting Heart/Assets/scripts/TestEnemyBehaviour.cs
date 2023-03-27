@@ -111,7 +111,7 @@ public class TestEnemyBehaviour : MonoBehaviour
         {
             enemyChase.SetActive(false);
             playerTarget = null;
-            nAgent.speed = 3;
+            nAgent.speed = 3.5f;
             if ((gameObject.transform.position.x >= target.x -1 && gameObject.transform.position.x <= target.x + 1) && (gameObject.transform.position.z >= target.z - 1 && gameObject.transform.position.z <= target.z + 1))
             {
                 if (listIndex == patrolPoints.Length - 1)
@@ -126,7 +126,7 @@ public class TestEnemyBehaviour : MonoBehaviour
         }
         else
         {
-            nAgent.speed = 4.5f;
+            nAgent.speed = 5.5f;
             playerTarget = GameObject.Find("Player");
 
             if (!growl.isPlaying && !pauseFlag)
