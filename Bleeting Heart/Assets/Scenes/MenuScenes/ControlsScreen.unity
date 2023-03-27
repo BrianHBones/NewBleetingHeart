@@ -773,15 +773,18 @@ MonoBehaviour:
 
     ESC - Pause
 
+    T
+    - Display Last Message
 
-    Your
-    heartrate will continuously fall. The higher your heartrate,
 
-    the faster
-    you can move but the easier you are to find. The lower
+    Your heartrate will continuously fall. The higher
+    your heartrate,
 
-    your heartrate, the
-    stealthier you are. Don''t let it get too low or
+    the faster you can move but the easier you are to find.
+    The lower
+
+    your heartrate, the stealthier you are. Don''t let it get too
+    low or
 
     too high, or you will die.'
 --- !u!222 &1090943919
