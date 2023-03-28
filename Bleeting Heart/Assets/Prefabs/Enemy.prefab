@@ -61,7 +61,7 @@ MeshRenderer:
   m_RenderingLayerMask: 1
   m_RendererPriority: 0
   m_Materials:
-  - {fileID: 10303, guid: 0000000000000000f000000000000000, type: 0}
+  - {fileID: 2100000, guid: bb3e4daa83b736b4fad900045490f75b, type: 2}
   m_StaticBatchInfo:
     firstSubMesh: 0
     subMeshCount: 0
@@ -279,9 +279,22 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   playerTarget: {fileID: 0}
   target: {x: 0, y: 0, z: 0}
+  gc: {fileID: 0}
   patrolPoints: []
   listIndex: 0
   detectRadius: 0
   chase: 0
   timer: 0
+  enemyChase: {fileID: 0}
   growl: {fileID: 0}
+  step:
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  growls: []
+  steps: []
+  timer_:
+  - 0
+  - 0
+  - 0
+  pauseFlag: 0
